@@ -17,7 +17,7 @@ namespace Strabo.Test
     {
         static void Main(string[] args)
         {
-            
+            TestYourEmguCVSetting();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Strabo.Test
         /// </summary>
         static void TestYourEmguCVSetting()
         {
-            Image<Hsv, Byte> img1 = new Image<Hsv, Byte>("lena.jpg");
+            Image<Hsv, Byte> img1 = new Image<Hsv, Byte>(@"..\..\data\lena.jpg");
             ImageViewer.Show(img1, "Result Window");
         }
     }
