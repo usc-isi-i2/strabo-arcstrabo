@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.UI;
+using Strabo.Core.Utility;
 
 namespace Strabo.Test
 {
@@ -17,7 +18,15 @@ namespace Strabo.Test
     {
         static void Main(string[] args)
         {
-            TestYourEmguCVSetting();
+            //TestTextLayerSeparation.test();
+            
+            //TestTextIdentification.test();
+
+            //TestOCR.test();
+
+            //TestColorSegmentation.test();
+
+            //TestYourEmguCVSetting();
         }
 
         /// <summary>
@@ -26,7 +35,7 @@ namespace Strabo.Test
         /// </summary>
         static void TestYourEmguCVSetting()
         {
-            Image<Hsv, Byte> img1 = new Image<Hsv, Byte>(@"..\..\data\lena.jpg");
+            Image<Gray, Byte> img1 = new Image<Gray, Byte>(@"..\..\data\lena.jpg");
             ImageViewer.Show(img1, "Result Window");
         }
     }

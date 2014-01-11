@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Strabo.Core.ColorSegmentation
 {
+    /// <summary>
+    /// KMeans based on EmguCV
+    /// </summary>
     class KMeans
     {
     }
