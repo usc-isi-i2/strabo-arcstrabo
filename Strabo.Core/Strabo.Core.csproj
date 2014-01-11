@@ -59,12 +59,6 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="MapTools">
-      <HintPath>..\packages\DotNetArchive\CreateShapefile\MapTools.dll</HintPath>
-    </Reference>
     <Reference Include="NetTopologySuite">
       <HintPath>..\packages\NetTopologySuite.1.13.1\lib\net403-client\NetTopologySuite.dll</HintPath>
     </Reference>
@@ -126,7 +120,6 @@
     <Compile Include="ImageProcessing\RotateImage.cs" />
     <Compile Include="OCR\ABBYYSingleStringResultParser.cs" />
     <Compile Include="OCR\DocxToText.cs" />
-    <Compile Include="Utility\ShapefileUntils.cs" />
     <Compile Include="OCR\TextLabel.cs" />
     <Compile Include="OCR\TextRecognitionWorker.cs" />
     <Compile Include="TextDetection\ConditionalDilationAutomatic.cs" />
