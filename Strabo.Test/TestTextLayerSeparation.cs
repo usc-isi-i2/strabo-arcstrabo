@@ -14,6 +14,7 @@ namespace Strabo.Test
         
         public static void test()
         {
+            // test
             string dir=@"..\..\data\";
             string fn = "US_U_12245_1_67_crop.png";
             string fnp = "US_U_12245_1_67_crop_p.png";
