@@ -16,7 +16,8 @@ namespace Strabo.Test
             string fn = "lena.jpg";
 
             ColorSegmentationWorker csw = new ColorSegmentationWorker();
-            csw.Apply(dir, fn);
+            csw.Apply(dir + fn,2,5);
+            
         }
     }
 }

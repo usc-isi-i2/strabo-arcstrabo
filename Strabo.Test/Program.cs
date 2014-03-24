@@ -24,7 +24,7 @@ namespace Strabo.Test
 
             //TestOCR.test();
 
-            //TestColorSegmentation.test();
+            TestColorSegmentation.test();
 
             //TestYourEmguCVSetting();
         }

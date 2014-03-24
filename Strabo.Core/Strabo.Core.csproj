@@ -99,7 +99,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorSegmentation\ColorExtraction.cs" />
     <Compile Include="ColorSegmentation\ColorSegmentationWorker.cs" />
+    <Compile Include="ColorSegmentation\ConnectedComponent.cs" />
     <Compile Include="ColorSegmentation\KMeans.cs" />
     <Compile Include="ColorSegmentation\MeanShiftMultiThreads.cs" />
     <Compile Include="ColorSegmentation\MedianCutMultiThreads.cs" />
