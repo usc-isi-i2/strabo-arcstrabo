@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strabo.Test", "Strabo.Test.csproj", "{D2135150-5126-4755-91C9-28FD2DB508FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strabo.Core", "..\Strabo.Core\Strabo.Core.csproj", "{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayerAccessingTest", "..\..\..\..\Documents\Visual Studio 2010\Projects\LayerAccessingTest\LayerAccessingTest\LayerAccessingTest.csproj", "{AB406C74-CC21-4269-B84B-3EA72E572A4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Debug|x86.ActiveCfg = Debug|x86
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Debug|x86.Build.0 = Debug|x86
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Release|x86.ActiveCfg = Release|x86
+		{D2135150-5126-4755-91C9-28FD2DB508FF}.Release|x86.Build.0 = Release|x86
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Debug|x86.ActiveCfg = Debug|x86
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Debug|x86.Build.0 = Debug|x86
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Release|x86.ActiveCfg = Release|x86
+		{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}.Release|x86.Build.0 = Release|x86
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Debug|x86.ActiveCfg = Debug|x86
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Debug|x86.Build.0 = Debug|x86
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Release|x86.ActiveCfg = Release|x86
+		{AB406C74-CC21-4269-B84B-3EA72E572A4C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

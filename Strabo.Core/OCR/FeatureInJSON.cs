@@ -1,0 +1,378 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace Strabo.Core.OCR
+{
+  
+        public struct  FieldAliases
+        {
+            private string oBJECTID;
+            private string text;
+            private string char_count;
+            private string orientation;
+            private string filename;
+            private string susp_text;
+            private string susp_char_count;
+            private string mass_centerX;
+            private string mass_centerY;
+            private string detectionCost;
+
+            public string DetectionCost
+            {
+                get { return detectionCost; }
+                set { detectionCost = value; }
+            }
+
+            public string OBJECTID
+            {
+                get
+                {
+                    return oBJECTID;
+                }
+                set
+                {
+
+                    oBJECTID = value;
+                }
+            }
+            public string Text
+            {
+                get
+                {
+                    return text;
+                }
+                set
+                {
+
+                    text = value;
+                }
+            }
+            public string Char_count
+            {
+                get
+                {
+                    return char_count;
+                }
+                set
+                {
+
+                    char_count = value;
+                }
+            }
+            public string Orientation
+            {
+                get
+                {
+                    return orientation;
+                }
+                set
+                {
+
+                    orientation = value;
+                }
+            }
+            public string Filename
+            {
+                get
+                {
+                    return filename;
+                }
+                set
+                {
+
+                    filename = value;
+                }
+            }
+            public string Susp_text
+            {
+                get
+                {
+                    return susp_text;
+                }
+                set
+                {
+
+                    susp_text = value;
+                }
+            }
+            public string Susp_char_count
+            {
+                get
+                {
+                    return susp_char_count;
+                }
+                set
+                {
+
+                    susp_char_count = value;
+                }
+            }
+            public string Mass_centerX
+            {
+                get
+                {
+                    return mass_centerX;
+                }
+                set
+                {
+
+                    mass_centerX = value;
+                }
+            }
+            public string Mass_centerY
+            {
+                get
+                {
+                    return mass_centerY;
+                }
+                set
+                {
+
+                    mass_centerY = value;
+                }
+            }
+
+        }
+
+        public struct  Spatial_Reference
+        {
+            private int wk_id;
+            private int latestWk_id;
+
+
+            public int wkid
+            {
+                get
+                {
+                    return wk_id;
+                }
+                set
+                {
+
+                    wk_id = value;
+                }
+            }
+            public int latestWkid
+            {
+                get
+                {
+                    return latestWk_id;
+                }
+                set
+                {
+
+                    latestWk_id = value;
+                }
+            }
+        }
+        public struct Field_info
+        {
+            private string vname;
+            private string vtype;
+            private string valias;
+            private int vlength;
+
+
+            public string name
+            {
+                get
+                {
+                    return vname;
+                }
+                set
+                {
+
+                    vname = value;
+                }
+            }
+            public string type
+            {
+                get
+                {
+                    return vtype;
+                }
+                set
+                {
+
+                    vtype = value;
+                }
+            }
+            public string alias
+            {
+                get
+                {
+                    return valias;
+                }
+                set
+                {
+
+                    valias = value;
+                }
+            }
+            public int length
+            {
+                get
+                {
+                    return vlength;
+                }
+                set
+                {
+
+                    vlength = value;
+                }
+            }
+        }
+
+        public class Geometry
+        {
+
+            private int[, ,] vrings = new int[1, 5, 2];
+
+            public int[, ,] rings
+            {
+                get { return vrings; }
+                set { vrings = value; }
+            }
+        }
+        public class Attributes
+        {
+            private int oBJECTID;
+
+            public int OBJECTID
+            {
+                get { return oBJECTID; }
+                set { oBJECTID = value; }
+            }
+            private string text;
+
+
+
+            public string Text
+            {
+                get { return text; }
+                set { text = value; }
+            }
+            private int char_count;
+
+            public int Char_count
+            {
+                get { return char_count; }
+                set { char_count = value; }
+            }
+            private double orientation;
+
+
+            public double Orientation
+            {
+                get { return orientation; }
+                set { orientation = value; }
+            }
+            private string filename;
+
+            public string Filename
+            {
+                get { return filename; }
+                set { filename = value; }
+            }
+            private string susp_text;
+
+            public string Susp_text
+            {
+                get { return susp_text; }
+                set { susp_text = value; }
+            }
+            private int susp_char_count;
+
+            public int Susp_char_count
+            {
+                get { return susp_char_count; }
+                set { susp_char_count = value; }
+            }
+            private double mass_centerX;
+
+            public double Mass_centerX
+            {
+                get { return mass_centerX; }
+                set { mass_centerX = value; }
+            }
+            private double mass_centerY;
+
+            public double Mass_centerY
+            {
+                get { return mass_centerY; }
+                set { mass_centerY = value; }
+            }
+            private float detectionCost;
+
+            public float DetectionCost
+            {
+                get { return detectionCost; }
+                set { detectionCost = value; }
+            }
+        }
+        public class Features
+        {
+
+            private Geometry vgeometry = new Geometry();
+
+            public Geometry geometry
+            {
+                get { return vgeometry; }
+                set { vgeometry = value; }
+            }
+            private Attributes vattributes = new Attributes();
+
+            public Attributes attributes
+            {
+                get { return vattributes; }
+                set { vattributes = value; }
+            }
+
+
+        }
+        public class FeatureInJSON
+        {
+            private string vdisplayFieldName;
+
+            public string displayFieldName
+            {
+                get { return vdisplayFieldName; }
+                set { vdisplayFieldName = value; }
+            }
+            private string vgeometryType;
+
+            public string geometryType
+            {
+                get { return vgeometryType; }
+                set { vgeometryType = value; }
+            }
+            public FieldAliases fieldAliases = new FieldAliases();
+            public Spatial_Reference spatialReference = new Spatial_Reference();
+            public Field_info[] fields = new Field_info[10];
+            public List<Features> features = new List<Features>();
+
+
+        }
+
+        public class GeoJson
+        {
+            private FeatureInJSON _featureInJson;
+
+            public FeatureInJSON featureInJson { get { return _featureInJson; } set { _featureInJson = value; } }
+        public  void writeJsonFile(string path)
+        {
+            string json = JsonConvert.SerializeObject(featureInJson);
+            System.IO.File.WriteAllText(path, json);
+        }
+        public  FeatureInJSON readGeoJsonFile(string path)
+        {
+            string json = System.IO.File.ReadAllText(path);
+            return JsonConvert.DeserializeObject<FeatureInJSON>(json);
+
+        }
+    }
+}

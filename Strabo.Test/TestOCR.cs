@@ -14,8 +14,8 @@ namespace Strabo.Test
         {
             string dir = @"..\..\data\Results\";
             string fn = "US_U_12245_1_67_crop.png";
-            TextRecognitionWorker trw = new TextRecognitionWorker();
-            trw.ApplyABBYYOCR(dir, fn);
+            //TextRecognitionWorker trw = new TextRecognitionWorker();
+            //trw.ApplyABBYYOCR(dir, fn);
         }
     }
 }
