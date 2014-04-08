@@ -19,25 +19,41 @@ namespace Strabo.Core.ColorSegmentation
     {
         public ColorSegmentationWorker() { }
 
-        public void Apply(String fullFilePath, int fromK, int toK)
+        public int Apply(String fullFilePath, int fromK, int toK, bool doExtraction)
         {
             //MeanShift
             fullFilePath = doMeanShift(fullFilePath);
-            //Median Cut
+            ////Median Cut
             fullFilePath = doMeanCut(fullFilePath);
+
+            Dictionary<int, double> report = new Dictionary<int, double>();
 
             for (int i = fromK; i <= toK; i++)
             {
+                System.Console.WriteLine(String.Format("k-mean {0} ... from {1}", i,toK));
+
                 //K-mean
-                string kfullFilePath = doKmean(fullFilePath, i);
+                string kfullFilePath = doKmean(fullFilePath, i, ref report);
                 //Color extraction
-                String[] pathList = doColorExctraction(kfullFilePath);
-                foreach (String s in pathList)
+                if (doExtraction)
                 {
-                    //Connected Components
-                    doConnectedComponent(s);
+                    String[] pathList = doColorExctraction(kfullFilePath);
+                    /*
+                    foreach (String s in pathList)
+                    {
+                        Connected Components
+                        doConnectedComponent(s);
+                    }*/
                 }
             }
+
+            int bestK = 0;
+            if (!doExtraction)
+            {
+                bestK = new KDetector().findBestK(report);
+            }
+
+            return bestK;
         }
 
         
@@ -68,11 +84,11 @@ namespace Strabo.Core.ColorSegmentation
             return latestFullFilePath;
         }
 
-        private String doKmean(String fullFilePath, int k)
+        private String doKmean(String fullFilePath, int k,ref Dictionary<int, double> report)
         {
             KMeans kmean = new KMeans();
 
-            String latestFullFilePath = kmean.apply(Path.GetDirectoryName(fullFilePath) + "\\", Path.GetFileName(fullFilePath), changeFileName("_k" + k, fullFilePath), k);
+            String latestFullFilePath = kmean.apply(Path.GetDirectoryName(fullFilePath) + "\\", Path.GetFileName(fullFilePath), changeFileName("_k" + k, fullFilePath), k, ref report);
 
             return latestFullFilePath;
         }
@@ -195,13 +211,15 @@ namespace Strabo.Core.ColorSegmentation
             GC.Collect();
 
             //Emgu_CV K-Means
+             Dictionary<int,double> rep = new Dictionary<int,double>();
             String report = "file, k-means, layer, CC, Color, R, G, B" + Environment.NewLine;
             string medianCutImage = mcqImagePaths[0].Replace(dir, "");
             for (int k = 2; k <= 2; k++)
             {
                 KMeans kmean = new KMeans();
                 String kmeanFileImage = medianCutImage.Insert(medianCutImage.IndexOf('.'), "_k{0}");
-                string kmeanSavedFile = kmean.apply(Path.GetFullPath(dir), medianCutImage, Path.GetFullPath(dir) + string.Format(kmeanFileImage, k), k);
+
+                string kmeanSavedFile = kmean.apply(Path.GetFullPath(dir), medianCutImage, Path.GetFullPath(dir) + string.Format(kmeanFileImage, k), k, ref rep);
 
                 String ceFileImage = kmeanSavedFile.Insert(kmeanSavedFile.IndexOf('.'), "_l{0}");
                 ColorExtraction ce = new ColorExtraction();
