@@ -104,7 +104,6 @@
     <Compile Include="ColorSegmentation\ColorSegmentationWorker.cs" />
     <Compile Include="ColorSegmentation\CompareImageLayers.cs" />
     <Compile Include="ColorSegmentation\ConnectedComponent.cs" />
-    <Compile Include="ColorSegmentation\FKmeans.cs" />
     <Compile Include="ColorSegmentation\KDetector.cs" />
     <Compile Include="ColorSegmentation\KMeans.cs" />
     <Compile Include="ColorSegmentation\MeanShiftMultiThreads.cs" />
