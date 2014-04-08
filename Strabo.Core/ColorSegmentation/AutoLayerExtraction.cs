@@ -16,7 +16,7 @@ namespace Strabo.Core.ColorSegmentation
 
             if (files.Length == 0)
             {
-                System.Console.WriteLine("No *.png file found in the current directory! ");
+                System.Console.WriteLine("No *.png file found in the specified directory! ");
             }
 
             foreach (string currentFile in files)
