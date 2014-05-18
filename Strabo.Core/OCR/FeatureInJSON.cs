@@ -230,9 +230,9 @@ namespace Strabo.Core.OCR
         public class Geometry
         {
 
-            private int[, ,] vrings = new int[1, 5, 2];
+            private double [, ,] vrings = new double [1, 5, 2];
 
-            public int[, ,] rings
+            public double [, ,] rings
             {
                 get { return vrings; }
                 set { vrings = value; }

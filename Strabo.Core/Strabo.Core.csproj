@@ -98,11 +98,134 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\bin\Emgu.CV.DebuggerVisualizers.VS2010.dll</HintPath>
     </Reference>
+    <Reference Include="Emgu.CV.GPU">
+      <HintPath>..\..\..\..\..\..\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\bin\Emgu.CV.GPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=2.9.0.1922, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\bin\Emgu.CV.UI.dll</HintPath>
+    </Reference>
     <Reference Include="GeoAPI">
       <HintPath>..\..\..\..\Source\Repos\Strabo\packages\GeoAPI.1.7.1.1\lib\net40-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\Source\Repos\Strabo\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.RelaxNG, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.RelaxNG.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection.Emit, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.Reflection.Emit.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection.Emit.MdbWriter, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.Reflection.Emit.MdbWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection.Emit.PdbWriter, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.Reflection.Emit.PdbWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="LinkedDataTools.JenaDotNet, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ArcStrabo\Dependencies\LinkedDataTools.JenaDotNet.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite">
       <HintPath>..\..\..\..\Source\Repos\Strabo\packages\NetTopologySuite.1.13.1\lib\net40-client\NetTopologySuite.dll</HintPath>
@@ -166,6 +289,8 @@
     <Compile Include="ImageProcessing\RotateImage.cs" />
     <Compile Include="OCR\FeatureInJSON.cs" />
     <Compile Include="OCR\WrapperTesseract.cs" />
+    <Compile Include="SymbolRecognition\DBpedia.cs" />
+    <Compile Include="SymbolRecognition\DrawMatches.cs" />
     <Compile Include="TextDetection\ConditionalDilationAutomatic.cs" />
     <Compile Include="TextDetection\DetectTextStrings.cs" />
     <Compile Include="TextDetection\Geometry.cs" />
@@ -188,9 +313,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SymbolRecognition\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\Emgu.CV.OCR\Emgu.CV.OCR.csproj">
       <Project>{FDA79B5F-80C6-41FA-A1D6-82DE69DBB4A1}</Project>
       <Name>Emgu.CV.OCR</Name>
@@ -207,6 +329,41 @@
       <Project>{E5AC138A-4968-4486-82DA-4D0D10F3337F}</Project>
       <Name>KMeans</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SymbolRecognition\Dependencies\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.AWT.WinForms.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Beans.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Charsets.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Corba.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Core.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Jdbc.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Management.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Media.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Misc.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Naming.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Remoting.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Security.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.SwingAWT.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Text.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Util.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.API.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Bind.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Crypto.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Parse.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.RelaxNG.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Transform.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.WebServices.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.XPath.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Reflection.Emit.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Reflection.Emit.MdbWriter.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Reflection.Emit.PdbWriter.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Runtime.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Runtime.JNI.dll" />
+    <Content Include="SymbolRecognition\Dependencies\LinkedDataTools.JenaDotNet.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OCR\Archive\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

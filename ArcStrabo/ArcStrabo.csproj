@@ -123,7 +123,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonSymbolRecognition.cs" />
     <Compile Include="ArcStraboObject.cs" />
+    <Compile Include="ButtonTextExtraction.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
@@ -141,13 +143,6 @@
       <LastGenOutput>Config.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </AddInContent>
-  </ItemGroup>
-  <ItemGroup>
-    <AddInContent Include="Images\LayerAccessingTest.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ButtonTextRecognition.cs" />
-    <AddInContent Include="Images\Button1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ESRI.ArcGIS.ArcMapUI">
@@ -197,10 +192,16 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Document\Symbol Recognition Help.docx" />
+    <None Include="Document\TextExtractionDocument.docx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\ButtonSumbolRecognition.png" />
+    <AddInContent Include="Images\ButtonTextExtraction.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>

@@ -29,7 +29,8 @@ namespace Strabo.Core.OCR
          
          // Variable value is set to parent directory of tessdata
          string path = AppDomain.CurrentDomain.BaseDirectory;
-         // String path = @"C:\Users\san28\Documents\New trial Visual 2010\Strabo-master\Strabo.Test\bin\";
+         
+            //Path should be same as TESSDATA folder
           Environment.SetEnvironmentVariable("TESSDATA_PREFIX", path);
 
           _ocr = new Tesseract(path, "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
@@ -96,9 +97,7 @@ namespace Strabo.Core.OCR
                 }  
                     try
                 {
-                    //using (StreamWriter file = File.CreateText(dirPath + "\\tessearct_geojson.json"))
-                    //{
-                        
+                    
                         FeatureInJSON jsonFeatures = new FeatureInJSON();
                         jsonFeatures.displayFieldName = "";
                         jsonFeatures.geometryType = "esriGeometryPolygon";
@@ -197,12 +196,11 @@ namespace Strabo.Core.OCR
                             ftr.geometry.rings[0, 4, 1] = -y;
                             jsonFeatures.features.Add(ftr);                            
                             
-                       // }
+                  
                             GeoJson geoJson = new GeoJson();
                             geoJson.featureInJson = jsonFeatures;
                             geoJson.writeJsonFile(dirPath + "\\tessearct_geojson.json");
-                        //string json = JsonConvert.SerializeObject(jsonFeatures);
-                        //file.Write(json);
+                        
                       
                     }
 
