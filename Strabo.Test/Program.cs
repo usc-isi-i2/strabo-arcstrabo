@@ -24,7 +24,14 @@ namespace Strabo.Test
 
             //TestOCR.test();
 
-            //TestColorSegmentation.test();
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Please specify the directory contains *.png map files!");
+            }
+            else
+            {
+                TestColorSegmentation.test(args[0]);
+            }
 
            
             //TestYourEmguCVSetting();

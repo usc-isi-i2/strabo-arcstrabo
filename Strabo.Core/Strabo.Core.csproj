@@ -268,11 +268,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorSegmentation\AutoLayerExtraction.cs" />
+    <Compile Include="ColorSegmentation\ColorExtraction.cs" />
     <Compile Include="ColorSegmentation\ColorSegmentationWorker.cs" />
+    <Compile Include="ColorSegmentation\CompareImageLayers.cs" />
+    <Compile Include="ColorSegmentation\ConnectedComponent.cs" />
+    <Compile Include="ColorSegmentation\KDetector.cs" />
     <Compile Include="ColorSegmentation\KMeans.cs" />
     <Compile Include="ColorSegmentation\MeanShiftMultiThreads.cs" />
     <Compile Include="ColorSegmentation\MedianCutMultiThreads.cs" />
     <Compile Include="ColorSegmentation\MyKMeans.cs" />
+    <Compile Include="ColorSegmentation\PreProcessing.cs" />
     <Compile Include="DataType\LineFunction.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -188,6 +188,68 @@ namespace KdKeys.DataMining.Clustering.KMeans
 
             return clusters;
         }
+
+
+        //My unsucessful code for providing center seed for kmean clustering
+        public ClusterCollection ClusterDataSet2(int k,ClusterCollection clusters, double[][] data)
+        {
+            //ClusterCollection clusters = RandomSeeding(k, data);
+            int rowCount = data.Length;
+            int stableClustersCount = 0;
+
+            int clusterCount = clusters.Count;
+
+            DateTime start = DateTime.Now;
+            Console.WriteLine("Start clustering {0} objects into {1} clusters: {2}", rowCount.ToString(), clusterCount.ToString(), start.ToLongTimeString());
+
+            //do actual clustering
+            int iterationCount = 0;
+            while (stableClustersCount != clusters.Count)
+            {
+                iterationCount++;
+                stableClustersCount = 0;
+
+                //Do actual clustering
+                //Console.WriteLine("Start Cluster for ineration {0}: {1}", iterationCount, DateTime.Now.ToLongTimeString());
+                ClusterCollection newClusters = this.ClusterDataSet(clusters, data);
+                //Console.WriteLine("  End Cluster for ineration {0}: {1}", iterationCount, DateTime.Now.ToLongTimeString());
+
+                for (int clusterIndex = 0; clusterIndex < clusters.Count; clusterIndex++)
+                {
+                    double[] originalClusterMean = clusters[clusterIndex].ClusterMean;
+                    double[] newClusterMean = newClusters[clusterIndex].ClusterMean;
+                    double distance = this.EuclideanDistance(newClusterMean, originalClusterMean);
+                    if (distance == 0)
+                    {
+                        stableClustersCount++;
+                        //Console.WriteLine("{0} stable clusters out of {1}", stableClustersCount.ToString(), clusterCount.ToString());
+                    }
+                }
+                bool reset = false;
+                for (int clusterIndex = 0; clusterIndex < clusters.Count; clusterIndex++)
+                {
+                    if (newClusters[clusterIndex].Count == 0)
+                    {
+                        reset = true; break;
+                    }
+                }
+                if (reset)
+                    clusters = RandomSeeding(k, data);
+                else
+                    clusters = newClusters;
+            }
+
+            DateTime end = DateTime.Now;
+            TimeSpan span = end - start;
+            Console.WriteLine("End clustering {0} objects into {1} clusters with {2} iterations: {3}", rowCount.ToString(), clusterCount.ToString(), iterationCount, end.ToLongTimeString());
+            Console.WriteLine("Parallel Clustering {0} objects into {1} clusters took {2} seconds", rowCount.ToString(), clusterCount.ToString(), span.TotalSeconds);
+            Console.WriteLine();
+
+            return clusters;
+        }
+
+
+
 		/// <summary>
 		/// Seperates a dataset into clusters or groups with similar characteristics
 		/// </summary>
@@ -278,8 +340,8 @@ namespace KdKeys.DataMining.Clustering.KMeans
 			}
 
 			if(clusters.Count <= 0)			
-				throw new SystemException("Cluster Count Cannot Be Zero!");				
-
+				throw new SystemException("Cluster Count Cannot Be Zero!");
+		
 			//break data points into n groups			
 			int remainder = rowCount % threads;
 			int numPerThread = rowCount / threads;
@@ -305,7 +367,7 @@ namespace KdKeys.DataMining.Clustering.KMeans
 					newClusters[ destinationCluster[i] ].Add(data[index++]);
 			}
 
-			return newClusters;
+            return newClusters;
 		}
 		
 		public int[] ClusterPartialDataSet(ClusterCollection clusters, double[][] data, int start, int count)
