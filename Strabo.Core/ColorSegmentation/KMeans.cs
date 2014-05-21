@@ -10,9 +10,9 @@ namespace Strabo.Core.ColorSegmentation
     /// <summary>
     /// KMeans based on EmguCV
     /// </summary>
-    class KMeans
+    public class KMeans
     {
-        static KDetector kdetector;
+        public static KDetector kdetector;
 
         public String apply(string dir, string srcImg, string outImg, int k, ref Dictionary<int, double> report)
         {

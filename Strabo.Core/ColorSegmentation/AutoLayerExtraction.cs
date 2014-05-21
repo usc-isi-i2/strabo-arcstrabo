@@ -38,12 +38,15 @@ namespace Strabo.Core.ColorSegmentation
 
                 //Find best K
                 ColorSegmentationWorker csw = new ColorSegmentationWorker();
-                int bestK = csw.Apply(dir + fn, 2, 10, false);
+                int bestK = csw.Apply(dir + fn, 2, 40, true);
 
-                //Extract layers for the best K
+                /*
+                Extract layers for the best K
                 csw = new ColorSegmentationWorker();
                 csw.Apply(dir + fn, bestK, bestK, true);
+                */
 
+                /*
                 //Compare extracted layrers and save report
                 CompareImageLayers cp = new CompareImageLayers();
                 String fileFormat = System.IO.Path.GetFileNameWithoutExtension(fn) + "_ms_mc1024_k" + bestK + "_l{0}" + System.IO.Path.GetExtension(fn);
@@ -51,6 +54,7 @@ namespace Strabo.Core.ColorSegmentation
 
                 //Merge similar layers and copy distinct layers
                 cp.generateOutput(pairList, bestK, dir, outPutDir, fileFormat);
+                 */
             }
         }
     }

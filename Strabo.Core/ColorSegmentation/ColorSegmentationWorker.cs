@@ -21,16 +21,24 @@ namespace Strabo.Core.ColorSegmentation
 
         public int Apply(String fullFilePath, int fromK, int toK, bool doExtraction)
         {
-            //MeanShift
-            fullFilePath = doMeanShift(fullFilePath);
-            ////Median Cut
-            fullFilePath = doMeanCut(fullFilePath);
+            PreProcessing pp = new PreProcessing();
+            fullFilePath = pp.doPerProccessing(fullFilePath);
 
             Dictionary<int, double> report = new Dictionary<int, double>();
 
+            int uc = PreProcessing.countUniqueColorNumber(fullFilePath);
+            if ( uc < toK)
+            {
+                System.Console.WriteLine(String.Format(" number of unique colors less than {0} so do only  {1}-mean", toK,uc));
+                fromK = uc;
+                toK = uc;
+            }
+
+
             for (int i = fromK; i <= toK; i++)
             {
-                System.Console.WriteLine(String.Format("k-mean {0} ... from {1}", i,toK));
+               
+                System.Console.WriteLine(String.Format("k-mean {0} ... from {1}", i, toK));
 
                 //K-mean
                 string kfullFilePath = doKmean(fullFilePath, i, ref report);
@@ -44,6 +52,42 @@ namespace Strabo.Core.ColorSegmentation
                         Connected Components
                         doConnectedComponent(s);
                     }*/
+
+                    CompareImageLayers cp = new CompareImageLayers();
+                    String fileFormat = System.IO.Path.GetFileNameWithoutExtension(fullFilePath) + "_k" + i + "_l{0}" + System.IO.Path.GetExtension(fullFilePath);
+                    List<List<double>> normalizedSpatialList = cp.analysisSpatialSimilarityOfLayers(i, System.IO.Path.GetDirectoryName(fullFilePath) + "\\", fileFormat);
+                    List<List<double>> normalizedColorList = cp.analysisColorSimilarityOfLayers(i, System.IO.Path.GetDirectoryName(fullFilePath) + "\\", fileFormat);
+
+                    //save Output
+                    StringBuilder sbTxt = new StringBuilder();
+                    for (int m = 0; m < normalizedColorList.Count; m++)
+                    {
+                        sbTxt.Append(string.Format("l{0},", m));
+                    }
+                    sbTxt = sbTxt.Remove(sbTxt.Length - 1, 1);
+                    sbTxt.Append(Environment.NewLine);
+
+                    //merge Color and Spatial half half
+                    List<List<double>> colorSpatialList = new List<List<double>>();
+                    for (int m = 0; m < normalizedColorList.Count; m++)
+                    {
+                        List<double> ls = new List<double>();
+                        for (int n = 0; n < normalizedColorList[0].Count; n++)
+                        {
+                           //double d = normalizedSpatialList[m][n] + normalizedColorList[m][n];
+                            double d =  normalizedColorList[m][n];
+                            ls.Add(d);
+
+                            sbTxt.Append(d + ",");
+                        }
+                        sbTxt = sbTxt.Remove(sbTxt.Length - 1, 1);
+                        sbTxt.Append(Environment.NewLine);
+
+                        colorSpatialList.Add(ls);
+                    }
+
+                    //Save the output
+                    System.IO.File.WriteAllText(System.IO.Path.GetDirectoryName(fullFilePath) + "\\" + "layersColorSpatialComparison_" + normalizedColorList.Count + ".txt", sbTxt.ToString());
                 }
             }
 
@@ -57,38 +101,16 @@ namespace Strabo.Core.ColorSegmentation
         }
 
         
-        private String doMeanShift(String fullFilePath)
-        {
-            //MeanShift
-            MeanShiftMultiThreads mt = new MeanShiftMultiThreads();
-            String latestFullFilePath = mt.ApplyYIQMT(fullFilePath, 8, 3, 15, changeFileName("_ms", fullFilePath));
-            mt = null;
-            GC.Collect();
-
-            return latestFullFilePath;
-        }
-
-        private String doMeanCut(String fullFilePath)
-        {
-            // Median Cut
-            MedianCutMultiThreads mcq = new MedianCutMultiThreads();
-            List<int> qnum_list = new List<int>();
-            qnum_list.Add(1024);
-            mcq.GenerateColorPalette(fullFilePath, qnum_list);
-
-            string[] mcqImagePaths = mcq.quantizeImageMT(8, Path.GetDirectoryName(fullFilePath) + "\\", Path.GetFileNameWithoutExtension(changeFileName("_mc", fullFilePath)));
-            String latestFullFilePath = mcqImagePaths[0];
-            mcq = null;
-            GC.Collect();
-
-            return latestFullFilePath;
-        }
+       
 
         private String doKmean(String fullFilePath, int k,ref Dictionary<int, double> report)
         {
             KMeans kmean = new KMeans();
 
             String latestFullFilePath = kmean.apply(Path.GetDirectoryName(fullFilePath) + "\\", Path.GetFileName(fullFilePath), changeFileName("_k" + k, fullFilePath), k, ref report);
+
+            KMeans.kdetector = null;
+            kmean = null;
 
             return latestFullFilePath;
         }

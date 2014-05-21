@@ -109,6 +109,7 @@
     <Compile Include="ColorSegmentation\MeanShiftMultiThreads.cs" />
     <Compile Include="ColorSegmentation\MedianCutMultiThreads.cs" />
     <Compile Include="ColorSegmentation\MyKMeans.cs" />
+    <Compile Include="ColorSegmentation\PreProcessing.cs" />
     <Compile Include="DataType\LineFunction.cs">
       <SubType>Code</SubType>
     </Compile>
