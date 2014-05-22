@@ -78,7 +78,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="KdKMeans.cs" />
+    <Compile Include="KdKMeans.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="KMeansParallel.cs" />
     <Compile Include="KMeansUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
