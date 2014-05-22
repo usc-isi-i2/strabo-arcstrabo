@@ -6,12 +6,13 @@ namespace KdKeys.DataMining.Clustering.KMeans
 {
 
 	/// <summary>
-	/// This class implement a KMeans clustering algorithm
+	/// This class implement a KMeans clustering algorithm old2 s
 	/// </summary>
 	public class KdKMeans
 	{
-		public KdKMeans()
+        public KdKMeans() 
 		{
+
 		}
 		
 		/// <summary>
