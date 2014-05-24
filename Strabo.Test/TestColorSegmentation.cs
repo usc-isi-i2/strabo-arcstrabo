@@ -7,8 +7,8 @@ namespace Strabo.Test
     {
         public static void test(String directory)
         {
-            AutoLayerExtraction ale = new AutoLayerExtraction();
-            ale.apply(directory);
+            //AutoLayerExtraction ale = new AutoLayerExtraction();
+            //ale.apply(directory);
         }
     }
 }
