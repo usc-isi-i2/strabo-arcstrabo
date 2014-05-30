@@ -22,7 +22,7 @@ namespace Strabo.Test
             
             //TestTextIdentification.test();
 
-            //TestOCR.test();
+            TestOCR.test();
 
             if (args.Length == 0)
             {

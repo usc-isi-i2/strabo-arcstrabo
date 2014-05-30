@@ -124,7 +124,7 @@
       <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\SharedData\ArcStrabo\Dependencies\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Jdbc">
       <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
@@ -204,7 +204,7 @@
     </Reference>
     <Reference Include="LinkedDataTools.JenaDotNet, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Downloads\LinkedDataTools.JenaDotNet.0.3\Dependencies\LinkedDataTools.JenaDotNet.dll</HintPath>
+      <HintPath>..\..\..\..\..\SharedData\ArcStrabo\Dependencies\LinkedDataTools.JenaDotNet.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite">
       <HintPath>..\..\..\..\Source\Repos\Strabo\packages\NetTopologySuite.1.13.1\lib\net40-client\NetTopologySuite.dll</HintPath>
