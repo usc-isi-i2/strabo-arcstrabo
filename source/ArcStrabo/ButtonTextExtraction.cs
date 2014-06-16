@@ -52,6 +52,7 @@ namespace ArcStrabo
     {
         protected override void OnClick()
         {
+            string straboPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableSTRABO_HOME, EnvironmentVariableTarget.Machine);
 
             #region Text Recognition
             ////Save Positive and Negative Layer and making GeoJason File

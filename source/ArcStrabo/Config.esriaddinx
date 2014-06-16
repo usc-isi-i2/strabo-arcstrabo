@@ -1,0 +1,34 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>LayerAccessingTest</Name>
+  <AddInID>{452AA858-1606-4E99-9833-1D38F46096C8}</AddInID>
+  <Description>ArcStrabo</Description>
+  <Version>1.0</Version>
+  <Image>Images\LayerAccessingTest.png</Image>
+  <Author>simakmo</Author>
+  <Company>University of Southern California</Company>
+  <Date>5/11/2014</Date>
+  <Targets>
+    <Target name="Desktop" version="10.2" />
+  </Targets>
+  <AddIn language="CLR4.0" library="ArcStrabo.dll" namespace="ArcStrabo">
+    <ArcMap>
+      <Commands>
+        <Button id="USC_ArcStrabo_ButtonShowStraboHome" class="ButtonShowStraboHome" message="Show STRABO_HOME" caption="Show STRABO_HOME" tip="Click to show the environment variable STRABO_HOME" category="ArcStrabo2" />
+        <Button id="USC_ArcStrabo_ButtonSumbolRecognition" class="ButtonSumbolRecognition" message="Symbol Recognition" caption="Symbol Recognition" tip="Click to recognize map symbols" category="ArcStrabo2" image="Images\ButtonSumbolRecognition.png" />
+        <Button id="USC_ArcStrabo_ButtonTextExtraction" class="ButtonTextExtraction" message="Text Recognition" caption="Text Recognition" tip="Click to recognize map text" category="ArcStrabo2" image="Images\ButtonTextExtraction.png" />
+      </Commands>
+      <Toolbars>
+        <Toolbar id="ArcStrabo2_Toolbar" caption="ArcStrabo2" showInitially="true">
+          <Items>
+            <Button refID="USC_ArcStrabo_ButtonShowStraboHome" />
+            <Button refID="USC_ArcStrabo_ButtonTextExtraction" />
+            <Button refID="USC_ArcStrabo_ButtonSumbolRecognition" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
+      <Extensions>
+        <Extension id="ArcStrabo2" productName="ArcStrabo2" class="ArcStrabo2Extension" showInExtensionDialog="true" autoLoad="true" />
+      </Extensions>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>

@@ -123,6 +123,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcStrabo2Extension.cs" />
+    <Compile Include="ButtonShowStraboHome.cs" />
     <Compile Include="ButtonSymbolRecognition.cs" />
     <Compile Include="ArcStraboObject.cs" />
     <Compile Include="ButtonTextExtraction.cs" />
@@ -140,8 +142,8 @@
   <ItemGroup>
     <AddInContent Include="Config.esriaddinx">
       <Generator>ArcGISAddInHostGenerator</Generator>
-      <LastGenOutput>Config.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Config.Designer.cs</LastGenOutput>
     </AddInContent>
   </ItemGroup>
   <ItemGroup>
