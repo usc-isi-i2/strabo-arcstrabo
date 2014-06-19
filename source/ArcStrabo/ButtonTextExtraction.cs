@@ -55,25 +55,30 @@ namespace ArcStrabo
             string straboPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableSTRABO_HOME, EnvironmentVariableTarget.Machine);
             string tessPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableTESS_DATA, EnvironmentVariableTarget.Machine);
 
-            if (String.IsNullOrEmpty(straboPath) == true)
-            {
-                MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHome);
-                return;
-            }
-            if (String.IsNullOrEmpty(tessPath) == true)
-            {
-                MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoTess_Data);
-                return;
-            }
 
-            bool Initialize_straboPath_Correct = initialize_straboPath_directories(straboPath);
-
-            if (Initialize_straboPath_Correct == false)
+            if (ArcStrabo2Extension.PathSet == false)
             {
-                MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHomeWritePermission);
-                return;
-            }
+               
+                if (String.IsNullOrEmpty(straboPath) == true)
+                {
+                    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHome);
+                    return;
+                }
+                if (String.IsNullOrEmpty(tessPath) == true)
+                {
+                    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoTess_Data);
+                    return;
+                }
 
+                bool Initialize_straboPath_Correct = ArcStrabo2Extension.initialize_straboPath_directories(straboPath);
+
+                if (Initialize_straboPath_Correct == false)
+                {
+                    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHomeWritePermission);
+                    return;
+                }
+                ArcStrabo2Extension.PathSet = true;
+            }
             
 
             #region Text Recognition
@@ -94,7 +99,7 @@ namespace ArcStrabo
             //Log.SetOutputDir(System.IO.Path.GetTempPath());
             Log.SetOutputDir(ArcStrabo2Extension.Log_Path);
 
-            Log.WriteLine(DateTime.Now+": MakingGeoJsonFile Mathod Start  SIMA");
+            Log.WriteLine("MakingGeoJsonFile Mathod Start  SIMA");
 
             IMap map = ArcMap.Document.FocusMap;
             //arcStraboObject.MakingTextGeoJsonFile(rasterPath);
@@ -153,108 +158,9 @@ namespace ArcStrabo
             Enabled = ArcMap.Application != null;
         }
 
-        protected bool initialize_straboPath_directories(string _straboPath)
-        {
-            // check whether straboPath exists
-            if (string.IsNullOrEmpty(_straboPath))
-            {
-                return false;
-            }
-            ArcStrabo2Extension.Output_Path = _straboPath + ArcStrabo2Extension.Output_Path;
-            ArcStrabo2Extension.Text_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Text_Result_Path;
-            ArcStrabo2Extension.Log_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Log_Path;
-            ArcStrabo2Extension.Intermediate_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Intermediate_Result_Path;
-            try
-            {
-                // check Output_Path
-                if (Directory.Exists(ArcStrabo2Extension.Output_Path))
-                {
-                    DirectoryInfo TheFolder = new DirectoryInfo(ArcStrabo2Extension.Output_Path);
-                    if (TheFolder.GetFiles() != null)
-                        foreach (FileInfo NextFile in TheFolder.GetFiles())
-                            File.Delete(NextFile.FullName);
-                }
-                else
-                {
-                    Directory.CreateDirectory(ArcStrabo2Extension.Output_Path);
-                }
-                // check Text_Result_Path
-                if (Directory.Exists(ArcStrabo2Extension.Text_Result_Path))
-                {
-                    // delete any existing files
-                    DirectoryInfo TheFolder = new DirectoryInfo(ArcStrabo2Extension.Text_Result_Path);
-                    if (TheFolder.GetFiles() != null)
-                        foreach (FileInfo NextFile in TheFolder.GetFiles())
-                            File.Delete(NextFile.FullName);
-                }
-                else
-                {
-                    // create folder
-                    Directory.CreateDirectory(ArcStrabo2Extension.Text_Result_Path);
-                }
-                // check Log_Path
-                if (Directory.Exists(ArcStrabo2Extension.Log_Path))
-                {
-                    DirectoryInfo TheFolder = new DirectoryInfo(ArcStrabo2Extension.Log_Path);
-                    if (TheFolder.GetFiles() != null)
-                        foreach (FileInfo NextFile in TheFolder.GetFiles())
-                            File.Delete(NextFile.FullName);
-                }
-                else
-                {
-                    Directory.CreateDirectory(ArcStrabo2Extension.Log_Path);
-                }
-                // check Intermediate_Result_Path
-                if (Directory.Exists(ArcStrabo2Extension.Intermediate_Result_Path))
-                {
-                    // delete any existing files
-                    DirectoryInfo TheFolder = new DirectoryInfo(ArcStrabo2Extension.Intermediate_Result_Path);
-                    if (TheFolder.GetFiles() != null)
-                        foreach (FileInfo NextFile in TheFolder.GetFiles())
-                            File.Delete(NextFile.FullName);
-                }
-                else
-                {
-                    // create folder
-                    Directory.CreateDirectory(ArcStrabo2Extension.Intermediate_Result_Path);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-        }
+        
 
-        protected bool initialize_tessPath_directories(string _tessPath)
-        {
-            // check whether tessPath exists
-            if (string.IsNullOrEmpty(_tessPath))
-            {
-                return false;
-            }
-
-            try
-            {
-                if (Directory.Exists(ArcStrabo2Extension.Tessdata_Path))
-                {
-                    DirectoryInfo TheFolder = new DirectoryInfo(ArcStrabo2Extension.Tessdata_Path);
-                    if (TheFolder.GetFiles() != null)
-                        foreach (FileInfo NextFile in TheFolder.GetFiles())
-                            File.Delete(NextFile.FullName);
-                }
-                else
-                {
-                    ArcStrabo2Extension.Tessdata_Path = _tessPath + "\\tessdata";
-                    Directory.CreateDirectory(ArcStrabo2Extension.Tessdata_Path);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-        }
+       
 
     }
 }

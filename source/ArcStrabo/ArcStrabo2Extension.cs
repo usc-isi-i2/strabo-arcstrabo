@@ -32,8 +32,8 @@ namespace ArcStrabo
     {
         public static string ErrorMsgNoTable = "Please upload a data table for transformation";
         public static string ErrorMsgNoStraboHome = "Unable to access the environment variable " + EnvironmentVariableSTRABO_HOME;
-        public static string ErrorMsgNoTess_Data = "Unable to access the environment variable "+ EnvironmentVariableTESS_DATA;
-        public static string ErrorMsgNoStraboHomeWritePermission = "Unable to write files to "+EnvironmentVariableSTRABO_HOME+". Please make sure you have the write permission.";
+        public static string ErrorMsgNoTess_Data = "Unable to access the environment variable " + EnvironmentVariableTESS_DATA;
+        public static string ErrorMsgNoStraboHomeWritePermission = "Unable to write files to " + EnvironmentVariableSTRABO_HOME + ". Please make sure you have the write permission.";
 
         public static string EnvironmentVariableSTRABO_HOME = "STRABO_HOME";
         public static string EnvironmentVariableTESS_DATA = "TESSDATA_PREFIX";
@@ -50,10 +50,12 @@ namespace ArcStrabo
         public static string TextPositiveLabelLayerName = "TextPositiveLabel";
         public static string TextNegtiveLabelLayerName = "TextNegativeLabel";
 
-        public static string TextPositiveLabelLayerJSONFileName ="PositiveLayerInfo.json";
-        public static string TextNegtiveLabelLayerJSONFileName ="NegativeLayerInfo.json";
+        public static string TextPositiveLabelLayerJSONFileName = "PositiveLayerInfo.json";
+        public static string TextNegtiveLabelLayerJSONFileName = "NegativeLayerInfo.json";
         public static string TesseractResultsJSONFileName = "tesseract_geojson.json";
         public static string TextLayerPNGFileName = "Result.png";
+
+        public static bool PathSet = false;
 
         public static ProgressForm pForm = new ProgressForm();
 
@@ -118,7 +120,7 @@ namespace ArcStrabo
 
             // Update the UI
             m_map = ArcMap.Document.FocusMap;
-            
+
             FillComboBox();
         }
 
@@ -152,8 +154,6 @@ namespace ArcStrabo
         }
 
         // Event handlers
-
-
         private void avEvent_ContentsChanged()
         {
 
@@ -191,19 +191,43 @@ namespace ArcStrabo
                     layerNameCombo.AddItem(rasterLayer.Name, rasterLayer);
                 }
             }
-
         }
         private static ArcStrabo2Extension GetExtension()
         {
-            //if (s_extension == null)
-            //{
-            //     Call FindExtension to load this just-in-time extension.
-            //    UID id = new UIDClass();
-            //    id.Value = ThisAddIn.IDs.StraboExtension;
-            //    ArcMap.Application.FindExtensionByCLSID(id);
-            //}
-
             return s_extension;
+        }
+        public static bool initialize_straboPath_directories(string _straboPath)
+        {
+            // check whether straboPath exists
+            if (string.IsNullOrEmpty(_straboPath))
+            {
+                return false;
+            }
+            ArcStrabo2Extension.Output_Path = _straboPath + ArcStrabo2Extension.Output_Path;
+            ArcStrabo2Extension.Text_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Text_Result_Path;
+            ArcStrabo2Extension.Log_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Log_Path;
+            ArcStrabo2Extension.Intermediate_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Intermediate_Result_Path;
+            try
+            {
+                // check Output_Path
+                if (Directory.Exists(ArcStrabo2Extension.Output_Path))
+                {
+                    Directory.Delete(ArcStrabo2Extension.Output_Path, true);
+                }
+                else
+                    Directory.CreateDirectory(ArcStrabo2Extension.Output_Path);
+
+                Directory.CreateDirectory(ArcStrabo2Extension.Text_Result_Path);
+                // check Log_Path
+                Directory.CreateDirectory(ArcStrabo2Extension.Log_Path);
+                // check Intermediate_Result_Path
+                Directory.CreateDirectory(ArcStrabo2Extension.Intermediate_Result_Path);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 

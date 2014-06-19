@@ -62,7 +62,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -149,7 +149,7 @@
       <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>..\bin\Debug\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>..\packages\IKVM.OpenJDK.Core.7.2.4630.5\lib\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Jdbc">
       <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
@@ -316,13 +316,8 @@
     <Compile Include="ImageProcessing\RGB.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KMeans\KMeans.csproj">
-      <Project>{E5AC138A-4968-4486-82DA-4D0D10F3337F}</Project>
-      <Name>KMeans</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SymbolRecognition\Dependencies\ICSharpCode.SharpZipLib.dll" />
@@ -358,6 +353,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="OCR\Archive\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KMeans\KMeans.csproj">
+      <Project>{E5AC138A-4968-4486-82DA-4D0D10F3337F}</Project>
+      <Name>KMeans</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,8 +13,8 @@ namespace Strabo.Test
         public static void textIndentification(string dir, string fn)
         {
            
-            TextDetectionWorker trw = new TextDetectionWorker();
-            trw.Apply(dir, fn, 2.5, false);
+            //TextDetectionWorker trw = new TextDetectionWorker();
+            //trw.Apply(dir, fn, 2.5, false);
         }
     }
 }

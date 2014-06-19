@@ -43,7 +43,7 @@ using ESRI.ArcGIS.DataSourcesFile;
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.Editor;
 
-
+using Strabo.Core.ColorSegmentation;
 
 namespace ArcStrabo
 {
@@ -52,15 +52,69 @@ namespace ArcStrabo
         protected override void OnClick()
         {
             string straboPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableSTRABO_HOME, EnvironmentVariableTarget.Machine);
-            if (!string.IsNullOrEmpty(straboPath))
-            {
-                ArcMap.Application.CurrentTool = null;
-                MessageBox.Show(straboPath);
-            }
-            else
-                MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHome);
-        }
+            string tessPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableTESS_DATA, EnvironmentVariableTarget.Machine);
 
+
+            if (ArcStrabo2Extension.PathSet == false)
+            {
+               
+                if (String.IsNullOrEmpty(straboPath) == true)
+                {
+                    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHome);
+                    return;
+                }
+                if (String.IsNullOrEmpty(tessPath) == true)
+                {
+                    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoTess_Data);
+                    return;
+                }
+
+                bool Initialize_straboPath_Correct = ArcStrabo2Extension.initialize_straboPath_directories(straboPath);
+
+                if (Initialize_straboPath_Correct == false)
+                {
+                    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHomeWritePermission);
+                    return;
+                }
+
+                ArcStrabo2Extension.PathSet = true;
+            }
+            //
+            //  TODO: Sample code showing how to access button host
+            //
+            ArcMap.Application.CurrentTool = null;
+            ComboBoxLayerSelector layerNameCobo = ComboBoxLayerSelector.GetLayerNameComboBox();
+
+            RasterLayer rasterlayer = new RasterLayer();
+            rasterlayer = ((RasterLayer)layerNameCobo.GetSelectedLayer());
+            //raster.Raster
+            //RasterLayer raster2 = new RasterLayer();
+            //raster2.CreateFromRaster(raster.Raster);
+            //IMap map = ArcMap.Document.FocusMap;
+            //map.AddLayer((ILayer)raster2);
+            //MessageBox.Show(layerNameCobo.selected_layer_name + " " + raster2.RowCount + " " + raster2.ColumnCount + " " + raster2.BandCount);
+            ColorSegmentationWorker cs = new ColorSegmentationWorker();
+            try
+            {
+                IRaster2 iraster2 = rasterlayer.Raster as IRaster2;
+                string[] bitmap_fns = cs.Apply(System.IO.Path.GetDirectoryName(iraster2.RasterDataset.CompleteName) + "\\", ArcStrabo2Extension.Text_Result_Path + "\\", System.IO.Path.GetFileName(iraster2.RasterDataset.CompleteName));
+                IMap map = ArcMap.Document.FocusMap;
+                foreach (string path in bitmap_fns)
+                {
+                    //RasterDataset rds = new RasterDataset();
+                    //rds.OpenFromFile(path);
+                    RasterLayer rasterlayer2 = new RasterLayer();
+                    rasterlayer2.CreateFromFilePath(path);
+                    map.AddLayer(rasterlayer2);
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.ToString());
+            }
+
+        }
         protected override void OnUpdate()
         {
             Enabled = ArcMap.Application != null;

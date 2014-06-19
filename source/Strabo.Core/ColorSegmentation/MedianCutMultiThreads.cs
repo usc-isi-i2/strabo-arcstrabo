@@ -135,7 +135,7 @@ namespace Strabo.Core.ColorSegmentation
                     }
                 }
         }
-        public string[] quantizeImageMT(int tnum, string dir, string fn)
+        public string[] quantizeImageMT(int tnum, string input_dir, string output_dir, string fn)
         {
             pixels = null;
             pixels = ImageUtils.BitmapToArray1DIntRGB(srcimg);
@@ -165,7 +165,7 @@ namespace Strabo.Core.ColorSegmentation
                     thread_array[i].Join();
 
                 srcimg.UnlockBits(srcData);
-                outImgPaths[j] = dir + fn + qnum_list[j] + ".png";
+                outImgPaths[j] = output_dir + fn + qnum_list[j] + ".png";
                 srcimg.Save(outImgPaths[j], ImageFormat.Png);
             }
 

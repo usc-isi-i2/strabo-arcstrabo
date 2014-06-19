@@ -142,7 +142,7 @@ namespace Strabo.Core.Utility
                 Console.Write(input);
             else
             {
-                StreamWriter sw = new StreamWriter(output_dir + "log.txt", true);
+                StreamWriter sw = new StreamWriter(log_dir + "log.txt", true);
                 sw.Write(input);
                 sw.Close();
             }
@@ -153,9 +153,9 @@ namespace Strabo.Core.Utility
                 Console.WriteLine(input);
             else
             {
-                StreamWriter sw = new StreamWriter(output_dir + "log.txt", true);
+                StreamWriter sw = new StreamWriter(log_dir + "log.txt", true);
                 //sw.WriteLine("                      "+DateTime.Now);
-                sw.WriteLine(input);
+                sw.WriteLine(DateTime.Now+" "+input);
                 sw.Close();
             }
         }
@@ -202,10 +202,10 @@ namespace Strabo.Core.Utility
                 Log.WriteLine(e.ToString());
             }
         }
-        static public void WriteBitmap(Bitmap srcimg, string fn)
-        {
-            WriteBitmap2Debug(srcimg, fn);
-        }
+        //static public void WriteBitmap(Bitmap srcimg, string fn)
+        //{
+        //    WriteBitmap2Debug(srcimg, fn);
+        //}
         static public void WriteBitmap2Output(Bitmap srcimg, string fn)
         {
             try

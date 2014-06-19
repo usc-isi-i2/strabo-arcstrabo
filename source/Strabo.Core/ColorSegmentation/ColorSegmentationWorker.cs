@@ -163,8 +163,8 @@ namespace Strabo.Core.ColorSegmentation
         //    return fullFilePath.Insert(fullFilePath.LastIndexOf('.'), postFix);
         //}
         //#endregion
-        
-        public string[] Apply(string dir, string fn)
+
+        public string[] Apply(string input_dir, string output_dir, string fn)
         {
             List<String> outImagePaths = new List<string>();
             try
@@ -173,7 +173,7 @@ namespace Strabo.Core.ColorSegmentation
 
                 //MeanShift
                 MeanShiftMultiThreads mt = new MeanShiftMultiThreads();
-                outImagePaths.Add(mt.ApplyYIQMT(dir + fn, 8, 3, 15, dir + fn_only + "_ms.png"));
+                outImagePaths.Add(mt.ApplyYIQMT(input_dir + fn, 8, 3, 15, output_dir + fn_only + "_ms.png"));
                 mt = null;
                 GC.Collect();
 
@@ -181,8 +181,8 @@ namespace Strabo.Core.ColorSegmentation
                 MedianCutMultiThreads mcq = new MedianCutMultiThreads();
                 List<int> qnum_list = new List<int>();
                 qnum_list.Add(1024);
-                mcq.GenerateColorPalette(dir + fn_only + "_ms.png", qnum_list);
-                string[] mcqImagePaths = mcq.quantizeImageMT(8, dir, fn_only + "_mc");
+                mcq.GenerateColorPalette(output_dir + fn_only + "_ms.png", qnum_list);
+                string[] mcqImagePaths = mcq.quantizeImageMT(8, output_dir, output_dir, fn_only + "_mc");
                 mcq = null;
                 GC.Collect();
 
@@ -213,7 +213,11 @@ namespace Strabo.Core.ColorSegmentation
                         km /= 2;
                         if (km < 4) break;
                         Console.WriteLine(km);
-                        outImagePaths.Add(kmeans.Apply(km, dir + fn_only + "_mc" + qnum_list[i] + ".png", dir + fn_only + "_mc" + qnum_list[i] + "_k" + km + ".png"));
+                        string kmeansInputFN= output_dir + fn_only + "_mc" + qnum_list[i] + ".png";
+
+                        string kmeansOutputFN = output_dir + fn_only + "_mc" + qnum_list[i] + "_k" + km + ".png";
+                             kmeans.Apply(km,kmeansInputFN, kmeansOutputFN);
+                            outImagePaths.Add(kmeansOutputFN);
                         kmeans = null;
                         GC.Collect();
                     }

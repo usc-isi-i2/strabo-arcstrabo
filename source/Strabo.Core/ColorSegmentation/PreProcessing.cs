@@ -84,7 +84,8 @@ namespace Strabo.Core.ColorSegmentation
             qnum_list.Add(1024);
             mcq.GenerateColorPalette(fullFilePath, qnum_list);
 
-            string[] mcqImagePaths = mcq.quantizeImageMT(8, Path.GetDirectoryName(fullFilePath) + "\\", Path.GetFileNameWithoutExtension(changeFileName("c", fullFilePath)));
+            //temp editing yaoyi
+            string[] mcqImagePaths = null;// mcq.quantizeImageMT(8, Path.GetDirectoryName(fullFilePath) + "\\", Path.GetFileNameWithoutExtension(changeFileName("c", fullFilePath)));
             String latestFullFilePath = mcqImagePaths[0];
             mcq = null;
             GC.Collect();

@@ -21,20 +21,20 @@ namespace Strabo.Test
             //TestTextLayerSeparation.textLayerExtract();
             
             //TestTextIdentification.test();
+            //TestColorSegmentation.test("");
+            //TestOCR.test();
 
-            TestOCR.test();
-
-            if (args.Length == 0)
-            {
-                Console.WriteLine("Please specify the directory contains *.png map files!");
-            }
-            else
-            {
-                TestColorSegmentation.test(args[0]);
-            }
+            //if (args.Length == 0)
+            //{
+            //    Console.WriteLine("Please specify the directory contains *.png map files!");
+            //}
+            //else
+            //{
+            //    TestColorSegmentation.test(args[0]);
+            //}
 
            
-            //TestYourEmguCVSetting();
+            TestYourEmguCVSetting();
         }
 
         /// <summary>
@@ -43,9 +43,8 @@ namespace Strabo.Test
         /// </summary>
         static void TestYourEmguCVSetting()
         {
-            Image<Gray, Byte> img1 = new Image<Gray, Byte>(@"..\..\data\lena.jpg");
-         
-           // ImageViewer.Show(img1, "Result Window");
+            Image<Gray, Byte> img1 = new Image<Gray, Byte>(@"..\..\..\data\lena.jpg");
+            //ImageViewer.Show(img1, "Result Window");
         }
     }
 }
