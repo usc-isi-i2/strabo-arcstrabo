@@ -126,7 +126,7 @@ namespace Strabo.Core.TextLayerExtraction
                 int min_idx = -1;
                 for (int i = 0; i < decomposed_img_list.Count; i++)
                 {
-                    Log.WriteBitmap2Debug(decomposed_img_list[i], "label" + label_count + "_color_" + i.ToString());
+                    //Log.WriteBitmap2Debug(decomposed_img_list[i], "label" + label_count + "_color_" + i.ToString());
                     int rgb = (int)cdf.fg_idx_color_hash[i];
                     if (InGlobalNonRoadHash(rgb))
                         continue;

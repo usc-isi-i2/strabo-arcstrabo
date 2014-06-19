@@ -180,7 +180,7 @@ namespace ArcStrabo
                     try
                     {
                         rasterLayer = (IRasterLayer)layer;
-                        if (rasterLayer.Name!= "SymbolPositiveLabel" && rasterLayer.Name != "TextPositiveLabel" && rasterLayer.Name != "TextNegativeLabel" && rasterLayer.Name != "OCRLayer")
+                        if (rasterLayer.Name != "SymbolPositiveLabel" && rasterLayer.Name != "TextPositiveLabel" && rasterLayer.Name != "TextNegativeLabel" && rasterLayer.Name != "OCRLayer")
                         {
                             string dir = rasterInfo.rasterPath = rasterLayer.FilePath;
                             rasterInfo.rasterType = rasterLayer.VisibleExtent.SpatialReference.Name;
@@ -197,7 +197,7 @@ namespace ArcStrabo
                                 System.IO.Directory.CreateDirectory(sourceImageDir);
                             Image<Bgr, Byte> srcImage = new Image<Bgr, byte>(dir);
                             Bitmap srcimg = new Bitmap(dir);
-                          
+
 
                             if (rasterInfo.rasterType == "Unknown")
                             {
@@ -239,10 +239,8 @@ namespace ArcStrabo
         /// <summary>
         /// access to the positive and negative layer and save them on the GeoJson File
         /// </summary>
-        public void MakingTextGeoJsonFile(string dir)
+        public void MakingTextLabelGeoJsonFile(string dir)
         {
-
-
             ///////////////////////////////////////////////////////////////
             //Setting current Map to access Layers, Feature Class and Features
             //build string builder to write on the ImageResultfile
@@ -254,16 +252,12 @@ namespace ArcStrabo
             ILayer layer = enumLayer.Next();
             //((IDataset)layer).Workspace.
             IFeatureLayer featureLayer;
-            IFeature iFeature;
+            
             try
             {
                 while (layer != null)
                 {
-
-
-
-
-                    if (layer.Name == "TextPositiveLabel" || layer.Name == "TextNegativeLabel")
+                    if (layer.Name == ArcStrabo2Extension.TextPositiveLabelLayerName || layer.Name == ArcStrabo2Extension.TextNegtiveLabelLayerName)
                     {
                         GeoJson geoJson = new GeoJson();
                         geoJson.featureInJson = new FeatureInJSON();
@@ -294,30 +288,24 @@ namespace ArcStrabo
                         setGeoJASONFeilds("Mass_centerX", esriFieldType.esriFieldTypeDouble, geoJson.featureInJson.fields[7]);
                         setGeoJASONFeilds("Mass_centerY", esriFieldType.esriFieldTypeDouble, geoJson.featureInJson.fields[8]);
 
-
-
-
-
                         //************************GeoProjectChange***SIIIIIIMA***********************************************************
-                        if (layer.Name == "TextPositiveLabel")
-                            path = dir + "\\PositiveLayerInfo.json";
-
-
-
-
-
-
-                        else
-                            path = dir + "\\NegativeLayerInfo.json";
+                        if (layer.Name == ArcStrabo2Extension.TextPositiveLabelLayerName)
+                            path = dir + "\\" + ArcStrabo2Extension.TextPositiveLabelLayerJSONFileName;
+                        else if (layer.Name == ArcStrabo2Extension.TextNegtiveLabelLayerName)
+                            path = dir + "\\" + ArcStrabo2Extension.TextNegtiveLabelLayerJSONFileName;
 
 
                         featureLayer = (IFeatureLayer)layer;
                         int count = featureLayer.FeatureClass.FeatureCount(null);
-                        for (int j = 1; j <= count; j++)
+                        //for (int j = 1; j <= count; j++)
+                        //{
+                        IFeatureCursor featureCursor = featureLayer.FeatureClass.Search(null,false);// (null, enableRecycling);
+                        IFeature iFeature = featureCursor.NextFeature();
+                        int i=0;
+                        while (iFeature != null)
                         {
-                            iFeature = featureLayer.FeatureClass.GetFeature(j);
+                            
                             geoJson.featureInJson.features.Add(new Features());
-                            int i = j - 1;
                             geoJson.featureInJson.features[i].attributes = new Attributes();
                             geoJson.featureInJson.features[i].attributes.OBJECTID = int.Parse(iFeature.get_Value(0).ToString());
                             geoJson.featureInJson.features[i].geometry = new Strabo.Core.OCR.Geometry();
@@ -331,9 +319,8 @@ namespace ArcStrabo
                             geoJson.featureInJson.features[i].geometry.rings[0, 3, 1] = iFeature.Extent.LowerLeft.Y;
                             geoJson.featureInJson.features[i].geometry.rings[0, 4, 0] = iFeature.Extent.UpperLeft.X;
                             geoJson.featureInJson.features[i].geometry.rings[0, 4, 1] = iFeature.Extent.UpperLeft.Y;
-                          
-
-
+                            iFeature = featureCursor.NextFeature();
+                            i++;
                         }
                         geoJson.writeJsonFile(path);
 
@@ -354,7 +341,7 @@ namespace ArcStrabo
         /// Cearte shapefile layer(Raster Layer) to open new layer for Polygons
         /// </summary>
         /// <returns></returns>
-      
+
 
         /// <summary>
         /// Cearte New FeatureLayer
@@ -687,8 +674,8 @@ namespace ArcStrabo
                 ////////////////////Geo Spatial PRoject Sima//////////////////////
 
 
-                fillImageList(resultImageDir + "\\PositiveLayerInfo.json", imgfnp_list, srcImage);
-                fillImageList(resultImageDir + "\\NegativeLayerInfo.json", imgfnn_list, srcImage);
+                fillImageList(resultImageDir + "\\"+ArcStrabo2Extension.TextPositiveLabelLayerJSONFileName, imgfnp_list, srcImage);
+                fillImageList(resultImageDir + "\\"+ArcStrabo2Extension.TextNegtiveLabelLayerJSONFileName, imgfnn_list, srcImage);
 
 
 
@@ -700,7 +687,7 @@ namespace ArcStrabo
                     result_list = tet.GUIProcessOneLayerOnly(srcimg, imgfnp_list, imgfnn_list, 4);
                 Console.WriteLine(Log.GetDurationInSeconds());
 
-                result_list[0].Save(resultImageDir + "\\Result.png");
+                result_list[0].Save(resultImageDir + "\\" + ArcStrabo2Extension.TextLayerPNGFileName);
             }
             catch (Exception e)
             {
@@ -737,7 +724,7 @@ namespace ArcStrabo
                     //Image<Bgr, Byte> test = srcImage.GetSubRect(rec);
                     Bitmap img = srcImage.Bitmap;
                     Bitmap cropedImage = img.Clone(rec, img.PixelFormat);
-                    cropedImage.Save( CreateDirectory(path, "Data")+"\\img" + j.ToString());
+                    //cropedImage.Save(CreateDirectory(path, "Data") + "\\img" + j.ToString());
                     imgList.Add(cropedImage);
 
                 }
@@ -751,14 +738,14 @@ namespace ArcStrabo
 
         }
 
-        public void textIndentification(string dir, string fn)
+        public void textIndentification(string input_dir, string output_dir, string fn)
         {
             try
             {
 
 
                 TextDetectionWorker trw = new TextDetectionWorker();
-                trw.Apply(dir, fn, 2.5, false);
+                trw.Apply(input_dir, output_dir, fn, 2.5, false);
             }
             catch (Exception e)
             {
@@ -797,11 +784,11 @@ namespace ArcStrabo
                 IWorkspaceFactory2 workspaceFactory = (IWorkspaceFactory2)new
                   ShapefileWorkspaceFactory();
 
-                if (System.IO.Directory.Exists(dir + "\\StraboToArcMap"))
-                    System.IO.Directory.Delete(dir + "\\StraboToArcMap", true);
+                if (System.IO.Directory.Exists(dir + "\\"+ArcStrabo2Extension.Result_Shapefile_Folder_Name))
+                    System.IO.Directory.Delete(dir + "\\" + ArcStrabo2Extension.Result_Shapefile_Folder_Name, true);
 
                 IWorkspaceName workspaceName = workspaceFactory.Create(dir,
-                  "StraboToArcMap", null, 0);
+                 ArcStrabo2Extension.Result_Shapefile_Folder_Name, null, 0);
 
                 IName name = (IName)workspaceName;
                 IWorkspace workspace = (IWorkspace)name.Open();
@@ -897,7 +884,7 @@ namespace ArcStrabo
                         setGeoJASONFeilds("Mass_centerX", esriFieldType.esriFieldTypeDouble, geoJson.featureInJson.fields[7]);
                         setGeoJASONFeilds("Mass_centerY", esriFieldType.esriFieldTypeDouble, geoJson.featureInJson.fields[8]);
 
-                        path =_rasterInfo.rasterData + "\\PositiveLayerInfo.json";//@"C:\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\Emgu.CV.Example\Strabo_Map_Processing\Hollywood\Data\PositiveLayerInfo.json"; //
+                        path = _rasterInfo.rasterData + "\\PositiveLayerInfo.json";//@"C:\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\Emgu.CV.Example\Strabo_Map_Processing\Hollywood\Data\PositiveLayerInfo.json"; //
 
                         featureLayer = (IFeatureLayer)layer;
                         int count = featureLayer.FeatureClass.FeatureCount(null);
@@ -919,7 +906,7 @@ namespace ArcStrabo
                             geoJson.featureInJson.features[i].geometry.rings[0, 3, 1] = iFeature.Extent.LowerLeft.Y;
                             geoJson.featureInJson.features[i].geometry.rings[0, 4, 0] = iFeature.Extent.UpperLeft.X;
                             geoJson.featureInJson.features[i].geometry.rings[0, 4, 1] = iFeature.Extent.UpperLeft.Y;
-                            if (iFeature.Extent.UpperLeft.Y < 0 && _rasterInfo.ratserNegative> 0)
+                            if (iFeature.Extent.UpperLeft.Y < 0 && _rasterInfo.ratserNegative > 0)
                                 _rasterInfo.ratserNegative = -1;
 
                         }
@@ -1028,7 +1015,7 @@ namespace ArcStrabo
                 List<Bitmap> imgfnp_list = new List<Bitmap>();
                 List<Bitmap> imgfnn_list = new List<Bitmap>();
 
-                
+
 
                 Image<Bgr, Byte> srcImage = new Image<Bgr, byte>(_rasterInfo.ratserImgPath);
 
@@ -1037,14 +1024,14 @@ namespace ArcStrabo
                 ////////////////////Geo Spatial PRoject Sima//////////////////////
 
 
-                fillSymbolList( imgfnp_list, srcImage);
+                fillSymbolList(imgfnp_list, srcImage);
 
 
                 Image<Gray, Byte> gElement = null;
-                
+
 
                 HashSet<float[]> hash = symbolRecognition(out gElement, _rasterInfo.rasterData);
-               
+
                 coordinatePoints = new CoordinatePoint[hash.Count];
                 pointSet = new Points[hash.Count];
 
@@ -1059,7 +1046,7 @@ namespace ArcStrabo
                         neg = _rasterInfo.ratserNegative;
                     pointSet[j] = new Points();
                     pointSet[j].leftTopX = i[0];
-                    pointSet[j].leftTopY = i[1]*neg;
+                    pointSet[j].leftTopY = i[1] * neg;
                     pointSet[j].rightTopX = i[0] + gElement.Size.Width;
                     pointSet[j].rightTopY = i[1] * neg;
                     pointSet[j].leftDownX = i[0];
@@ -1118,7 +1105,7 @@ namespace ArcStrabo
                 lngLatSet[i].URI = pointSet[i].URI;
             }
         }
-        private void fillSymbolList( List<Bitmap> imgList, Image<Bgr, Byte> srcImage)
+        private void fillSymbolList(List<Bitmap> imgList, Image<Bgr, Byte> srcImage)
         {
 
             FeatureInJSON _featureInJSON;
@@ -1162,11 +1149,11 @@ namespace ArcStrabo
                     //  Image<Bgr, Byte> test = srcImage.GetSubRect(rec);
                     Bitmap img = srcImage.Bitmap;
                     Bitmap cropedImage = img.Clone(rec, img.PixelFormat);
-                   
+
                     if (!System.IO.Directory.Exists(_rasterInfo.rasterIn))
                         System.IO.Directory.CreateDirectory(_rasterInfo.rasterIn);
-                    Bitmap resizedImage = new Bitmap(cropedImage, cropedImage.Width , cropedImage.Height );
-                    resizedImage.Save(_rasterInfo.rasterIn +"\\element.png");
+                    Bitmap resizedImage = new Bitmap(cropedImage, cropedImage.Width, cropedImage.Height);
+                    resizedImage.Save(_rasterInfo.rasterIn + "\\element.png");
                     imgList.Add(cropedImage);
 
                 }
@@ -1221,7 +1208,7 @@ namespace ArcStrabo
                     }
                     else
                     {
-                       // if (pointSet[j].leftTopY < 0)
+                        // if (pointSet[j].leftTopY < 0)
                         {
                             pPoint1.PutCoords(pointSet[j].leftTopX, pointSet[j].leftTopY);
                             pPoint2.PutCoords(pointSet[j].rightTopX, pointSet[j].rightTopY);
@@ -1387,7 +1374,7 @@ namespace ArcStrabo
                         #endregion
 
 
-                       // log.WriteLine(string.Format("\n\nSub-image #{0}:\n\tLoop #({1}, {2})\n\tSW1 location: ({3}, {4})", counter, i, j, xstart, ystart));
+                        // log.WriteLine(string.Format("\n\nSub-image #{0}:\n\tLoop #({1}, {2})\n\tSW1 location: ({3}, {4})", counter, i, j, xstart, ystart));
                         test = drawResult.Item1;
                         recStat = drawResult.Item2;
                         if (recStat[2] > 0)
@@ -1407,7 +1394,7 @@ namespace ArcStrabo
                 throw;
             }
 
-           // log.WriteLine("The count before consolidation: " + allMatches.Count);
+            // log.WriteLine("The count before consolidation: " + allMatches.Count);
 
             HashSet<float[]> hash0 = consolidate(allMatches, gElement.Width - 1, gElement.Height - 1, null);
             ArrayList al = new ArrayList();
@@ -1419,7 +1406,7 @@ namespace ArcStrabo
 
             HashSet<float[]> hash = consolidate(al, gElement.Width - 1, gElement.Height - 1, null);
 
-           // log.WriteLine("The count after consolidation: " + hash.Count);
+            // log.WriteLine("The count after consolidation: " + hash.Count);
             //Blue 
             TextWriter coordinatesOnMapBlue = File.AppendText(path + topic + "/coordinatesOnMapBlue.txt");
             int k = 0;
@@ -1501,7 +1488,7 @@ namespace ArcStrabo
         /*************************** these functions belongs to Geo_Spatial Project**/
         /****************************************************************************/
 
-#region if want to add DBpedia part enable this region and add all projects at this folder: Visual Studio 2010\Projects\LinkedDataTools.JenaDotNet.0.3\VS2010
+        #region if want to add DBpedia part enable this region and add all projects at this folder: Visual Studio 2010\Projects\LinkedDataTools.JenaDotNet.0.3\VS2010
         private double shortestDistance(double lngS, double latS, double lngD, double latD)
         {
 
@@ -1512,7 +1499,7 @@ namespace ArcStrabo
         {
             List<CoordinatePoint> pointURIs = new List<CoordinatePoint>();
 
-            List<DBpedia.DbpediaInfo> dbpediaResults = DBpedia.getDbpediaInfo(_rasterInfo.rasterTopLeftX , _rasterInfo.rasterTopLeftY, _rasterInfo.rasterDownRightX, _rasterInfo.rasterDownRightY);
+            List<DBpedia.DbpediaInfo> dbpediaResults = DBpedia.getDbpediaInfo(_rasterInfo.rasterTopLeftX, _rasterInfo.rasterTopLeftY, _rasterInfo.rasterDownRightX, _rasterInfo.rasterDownRightY);
             DBpedia.DbpediaInfo answer = new DBpedia.DbpediaInfo();
 
             foreach (CoordinatePoint item in coordinatePoints)
@@ -1581,7 +1568,7 @@ namespace ArcStrabo
             }
             return type;
         }
-#endregion
+        #endregion
 
     }
 }

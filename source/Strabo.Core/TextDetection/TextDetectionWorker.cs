@@ -117,16 +117,16 @@ namespace Strabo.Core.TextDetection
             }
 
         }
-        public string Apply(string dir, string fn, double size_ratio, bool preprocessing)
+        public string Apply(string input_dir, string output_dir, string fn, double size_ratio, bool preprocessing)
         {
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-            if (!Directory.Exists(dir + "Results"))
-                Directory.CreateDirectory(dir + "Results");
-            output_dir = dir+"Results\\";
-            Bitmap srcimg = new Bitmap(dir + fn);
-            Log.DeleteAll(output_dir);
-            Log.SetOutputDir(output_dir);
+            //if (!Directory.Exists(dir))
+            //    Directory.CreateDirectory(dir);
+            //if (!Directory.Exists(dir + "Results"))
+            //    Directory.CreateDirectory(dir + "Results");
+            this.output_dir = output_dir;
+            Bitmap srcimg = new Bitmap(input_dir + fn);
+            //Log.DeleteAll(output_dir);
+            //Log.SetOutputDir(output_dir);
 
             // assigning parameters
             mw = srcimg.Width;

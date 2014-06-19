@@ -45,14 +45,14 @@ namespace Strabo.Core.OCR
         /// <summary>
         /// Initializes and creates the tessearct engine
         /// </summary>
-        public WrapperTesseract()
+        public WrapperTesseract(string path)
       {
          
          // Variable value is set to parent directory of tessdata
-         string path = AppDomain.CurrentDomain.BaseDirectory;
+         //string path = AppDomain.CurrentDomain.BaseDirectory;
          
-            //Path should be same as TESSDATA folder
-          Environment.SetEnvironmentVariable("TESSDATA_PREFIX", path);
+         //Path should be same as TESSDATA folder
+         //Environment.SetEnvironmentVariable("TESSDATA_PREFIX", path); //This path should always end with a "/" or "\", e.g., TESSDATA_PREFIX="/usr/share/tesseract-ocr/"
 
           _ocr = new Tesseract(path, "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
         
@@ -61,9 +61,9 @@ namespace Strabo.Core.OCR
          /// Extracts text from images using tesseract and creates a GEOJSON file with all the features
          /// </summary>
          /// <param name="dirPath">This is the path where all the image files will be present</param>
-           public void ExtractTextToGEOJSON(String dirPath)
+        public void ExtractTextToGEOJSON(string inputPath, string outputPath, string TesseractResultsJSONFileName)
             {
-                string[] filePaths = Directory.GetFiles(dirPath, "*.png");
+                string[] filePaths = Directory.GetFiles(inputPath, "*.png");
                 if (filePaths.Length == 0)
                     return;
                 int noOfFiles = filePaths.Length;
@@ -220,7 +220,7 @@ namespace Strabo.Core.OCR
                   
                             GeoJson geoJson = new GeoJson();
                             geoJson.featureInJson = jsonFeatures;
-                            geoJson.writeJsonFile(dirPath + "\\tessearct_geojson.json");
+                            geoJson.writeJsonFile(outputPath + "\\" + TesseractResultsJSONFileName);
                         
                       
                     }
