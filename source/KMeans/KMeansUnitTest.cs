@@ -3,6 +3,10 @@ using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 
+/// <summary>
+/// Source: http://www.kdkeys.net/
+/// Tutorial: http://www.kdkeys.net/k-means-clustering-algorithm-data-mining-tutorial/
+/// </summary>
 namespace KdKeys.DataMining.Clustering.KMeans
 {
 	class UnitTest
