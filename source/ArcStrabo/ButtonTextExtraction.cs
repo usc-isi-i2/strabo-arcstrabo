@@ -73,13 +73,18 @@ namespace ArcStrabo
                 MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoStraboHomeWritePermission);
                 return;
             }
+
             
-          
+
             #region Text Recognition
             ////Save Positive and Negative Layer and making GeoJason File
+            ComboBoxLayerSelector layerNameCobo = ComboBoxLayerSelector.GetLayerNameComboBox();
+
+            RasterLayer rasterlayer = new RasterLayer();
+            rasterlayer = ((RasterLayer)layerNameCobo.GetSelectedLayer());
 
             ArcStraboObject arcStraboObject = new ArcStraboObject();
-            string input_data_source_directory = arcStraboObject.findRasterLayerPath();
+            string input_data_source_directory = rasterlayer.FilePath;// arcStraboObject.findRasterLayerPath();
 
             //string rasterPath = arcStraboObject.CreateDirectory(dir, "Data");
             //string logPath = arcStraboObject.CreateDirectory(dir, "Log");

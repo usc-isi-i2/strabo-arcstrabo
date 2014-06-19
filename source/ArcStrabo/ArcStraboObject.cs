@@ -139,6 +139,11 @@ namespace ArcStrabo
                 ILayer layer = enumLayer.Next();
                 while (layer != null)
                 {
+                    if (!(layer is IRasterLayer))
+                    {
+                        layer = enumLayer.Next();
+                        continue;
+                    }
                     IRasterLayer rasterLayer;
                     //((IDataset)layer).Workspace.
                     try

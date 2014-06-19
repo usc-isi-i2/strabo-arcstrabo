@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Desktop.AddIns;
 
 namespace ArcStrabo
 {
@@ -34,18 +36,30 @@ namespace ArcStrabo
 
         public static ProgressForm pForm = new ProgressForm();
 
+        private IMap m_map;
+        private static ArcStrabo2Extension s_extension;
+
+        //http://help.arcgis.com/en/sdk/10.0/arcobjects_net/componenthelp/index.html#/ArcMap_Element/001v000001s7000000/
+
         public ArcStrabo2Extension()
         {
         }
 
         protected override void OnStartup()
         {
-            //
-            // TODO: Uncomment to start listening to document events
-            //
-            // WireDocumentEvents();
-        }
+            s_extension = this;
 
+            // Wire up events
+            ArcMap.Events.NewDocument += ArcMap_NewOpenDocument;
+            ArcMap.Events.OpenDocument += ArcMap_NewOpenDocument;
+        }
+        private void ArcMap_NewOpenDocument()
+        {
+            IActiveViewEvents_Event pageLayoutEvent = ArcMap.Document.PageLayout as IActiveViewEvents_Event;
+            pageLayoutEvent.FocusMapChanged += new IActiveViewEvents_FocusMapChangedEventHandler(AVEvents_FocusMapChanged);
+
+            Initialize();
+        }
         private void WireDocumentEvents()
         {
             //
@@ -68,7 +82,108 @@ namespace ArcStrabo
         {
             // TODO: Handle new document event
         }
+        private void Initialize()
+        {
+            // If the extension hasn't been started yet or it's been turned off, bail
+            if (s_extension == null || this.State != ExtensionState.Enabled)
+                return;
 
+            // Reset event handlers
+            IActiveViewEvents_Event avEvent = ArcMap.Document.FocusMap as IActiveViewEvents_Event;
+            avEvent.ItemAdded += AvEvent_ItemAdded;
+            avEvent.ItemDeleted += AvEvent_ItemAdded;
+
+            avEvent.ContentsChanged += avEvent_ContentsChanged;
+
+            // Update the UI
+            m_map = ArcMap.Document.FocusMap;
+            
+            FillComboBox();
+        }
+
+        private void Uninitialize()
+        {
+            if (s_extension == null)
+                return;
+
+            // Detach event handlers
+            IActiveViewEvents_Event avEvent = m_map as IActiveViewEvents_Event;
+            avEvent.ItemAdded -= AvEvent_ItemAdded;
+            avEvent.ItemDeleted -= AvEvent_ItemAdded;
+            avEvent.ContentsChanged -= avEvent_ContentsChanged;
+            avEvent = null;
+
+            // Update UI
+            ComboBoxLayerSelector layerNameCobo = ComboBoxLayerSelector.GetLayerNameComboBox();
+            if (layerNameCobo != null)
+                layerNameCobo.ClearAll();
+
+        }
+        internal static bool IsExtensionEnabled()
+        {
+            if (s_extension == null)
+                GetExtension();
+
+            if (s_extension == null)
+                return false;
+
+            return s_extension.State == ExtensionState.Enabled;
+        }
+
+        // Event handlers
+
+
+        private void avEvent_ContentsChanged()
+        {
+
+        }
+
+        private void AvEvent_ItemAdded(object Item)
+        {
+            m_map = ArcMap.Document.FocusMap;
+            FillComboBox();
+        }
+
+        private void AVEvents_FocusMapChanged()
+        {
+            Initialize();
+        }
+
+        private void FillComboBox()
+        {
+            ComboBoxLayerSelector layerNameCombo = ComboBoxLayerSelector.GetLayerNameComboBox();
+            if (layerNameCombo == null)
+                return;
+
+            layerNameCombo.ClearAll();
+
+            IRasterLayer rasterLayer;
+            // Loop through the layers in the map and add the layer's name to the combo box.
+            for (int i = 0; i < m_map.LayerCount; i++)
+            {
+                if (m_map.get_Layer(i) is IRasterLayer)
+                {
+                    rasterLayer = m_map.get_Layer(i) as IRasterLayer;
+                    if (rasterLayer == null)
+                        break;
+
+                    layerNameCombo.AddItem(rasterLayer.Name, rasterLayer);
+                }
+            }
+
+        }
+        private static ArcStrabo2Extension GetExtension()
+        {
+            //if (s_extension == null)
+            //{
+            //     Call FindExtension to load this just-in-time extension.
+            //    UID id = new UIDClass();
+            //    id.Value = ThisAddIn.IDs.StraboExtension;
+            //    ArcMap.Application.FindExtensionByCLSID(id);
+            //}
+
+            return s_extension;
+        }
     }
 
 }

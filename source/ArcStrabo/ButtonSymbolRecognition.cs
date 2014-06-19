@@ -48,7 +48,7 @@ using Strabo.Core.Utility;
 
 namespace ArcStrabo
 {
-    public class ButtonSumbolRecognition : ESRI.ArcGIS.Desktop.AddIns.Button
+    public class ButtonSymbolRecognition : ESRI.ArcGIS.Desktop.AddIns.Button
     {
 
         protected override void OnClick()
@@ -97,7 +97,7 @@ namespace ArcStrabo
         protected override void OnUpdate()
         {
         }
-        public ButtonSumbolRecognition()
+        public ButtonSymbolRecognition()
         {
 
         }

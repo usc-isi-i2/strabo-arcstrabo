@@ -121,10 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArcStrabo2Extension.cs" />
+    <Compile Include="ButtonColorSegmentation.cs.cs" />
     <Compile Include="ButtonShowStraboHome.cs" />
     <Compile Include="ButtonSymbolRecognition.cs" />
     <Compile Include="ArcStraboObject.cs" />
     <Compile Include="ButtonTextExtraction.cs" />
+    <Compile Include="ComboBoxLayerSelector.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Config.esriaddinx</DependentUpon>
@@ -199,7 +201,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <AddInContent Include="Images\ButtonSumbolRecognition.png" />
     <AddInContent Include="Images\ButtonTextExtraction.png" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +213,12 @@
     <EmbeddedResource Include="ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\ButtonSymbolRecognition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\ButtonColorSegmentation.png" />
   </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
