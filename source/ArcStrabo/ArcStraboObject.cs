@@ -150,7 +150,7 @@ namespace ArcStrabo
                     }
                     catch (Exception e)
                     {
-
+                        Log.WriteLine(e.Message);
                         // throw;
                     }
                     layer = enumLayer.Next();
@@ -668,7 +668,7 @@ namespace ArcStrabo
         ////////TextExtraction and TextIdentifier Methods
         //</summary>
         //<param name="sourceImageDir"></param>
-        public void textLayerExtract(string sourceImageDir)
+        public void textLayerExtract(string sourceImageDir, string resultImageDir)
         {
             try
             {
@@ -683,12 +683,12 @@ namespace ArcStrabo
                 Image<Bgr, Byte> srcImage = new Image<Bgr, byte>(sourceImageDir);
                 Bitmap srcimg = new Bitmap(sourceImageDir);
 
-                sourceImageDir = CreateDirectory(sourceImageDir, "Data");
+                //sourceImageDir = CreateDirectory(sourceImageDir, "Data");
                 ////////////////////Geo Spatial PRoject Sima//////////////////////
 
 
-                fillImageList(sourceImageDir + "\\PositiveLayerInfo.json", imgfnp_list, srcImage);
-                fillImageList(sourceImageDir + "\\NegativeLayerInfo.json", imgfnn_list, srcImage);
+                fillImageList(resultImageDir + "\\PositiveLayerInfo.json", imgfnp_list, srcImage);
+                fillImageList(resultImageDir + "\\NegativeLayerInfo.json", imgfnn_list, srcImage);
 
 
 
@@ -700,7 +700,7 @@ namespace ArcStrabo
                     result_list = tet.GUIProcessOneLayerOnly(srcimg, imgfnp_list, imgfnn_list, 4);
                 Console.WriteLine(Log.GetDurationInSeconds());
 
-                result_list[0].Save(sourceImageDir + "\\Result.png");
+                result_list[0].Save(resultImageDir + "\\Result.png");
             }
             catch (Exception e)
             {

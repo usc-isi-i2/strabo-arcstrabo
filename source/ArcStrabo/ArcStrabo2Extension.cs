@@ -9,9 +9,18 @@ namespace ArcStrabo
     {
         public static string ErrorMsgNoTable = "Please upload a data table for transformation";
         public static string ErrorMsgNoStraboHome = "Unable to access the environment variable STRABO_HOME";
-        public static string ErrorMsgNoKarmaHomeWritePermission = "Unable to write files to STRABO_HOME. Please make sure you have the write permission to ";
+        public static string ErrorMsgNoStraboHomeWritePermission = "Unable to write files to STRABO_HOME. Please make sure you have the write permission to ";
 
         public static string EnvironmentVariableSTRABO_HOME = "STRABO_HOME";
+        public static string EnvironmentVariableTESS_DATA = "TESS_DATA";
+
+        // Renuka: adding folders
+        public static string Text_Result_Path;
+        public static string Symbol_Result_Path;
+        public static string Log_Path;
+        public static string Output_Path;
+        public static string Tessdata_Path;
+        public static string Intermediate_Results_Path;
 
 
         public ArcStrabo2Extension()

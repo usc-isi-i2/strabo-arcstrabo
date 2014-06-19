@@ -45,7 +45,6 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Features2D;
 using Emgu.CV.Structure;
 using Emgu.CV.Util;
-using Emgu.CV.GPU;
 using Emgu.Util;
 using Emgu.CV.UI;
 

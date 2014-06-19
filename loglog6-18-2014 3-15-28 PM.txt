@@ -1,0 +1,22 @@
+Unable to cast COM object of type 'System.__ComObject' to interface type 'ESRI.ArcGIS.Carto.IRasterLayer'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{D02371C7-35F7-11D2-B1F2-00C04F8EDEFF}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+Unable to cast COM object of type 'System.__ComObject' to interface type 'ESRI.ArcGIS.Carto.IRasterLayer'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{D02371C7-35F7-11D2-B1F2-00C04F8EDEFF}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+Start
+MakingGeoJsonFile Mathod Start  SIMA
+MakingGeoJsonFile Mathod Finish
+textLayerExtract Mathod Start SIMA
+textLayerExtract Mathod Finish
+AddRasterLayer Mathod Start SIMA
+AddRasterLayer: Failed to open raster dataset
+AddRasterLayer Mathod Finish
+textIndentification Mathod Start SIMA
+textIndentification: Parameter is not valid.
+textIndentification Mathod Finish
+ExtractTextToGEOJSON Mathod Start SANJUALI
+ExtractTextToGEOJSON Mathod Finish
+CreateFeatureClassWithFields Mathod Start SIMA
+CreateFeatureClassWithFields: Could not find file 'C:\Users\Renuka\Desktop\Clone_Strabo\text_data\Results\tessearct_geojson.json'.
+CreateFeatureLayer:Error HRESULT E_FAIL has been returned from a call to a COM component.
+CreateFeatureClassWithFields Mathod Finish
+AddPolygon Mathod Start
+AddPolygon: Could not find file 'C:\Users\Renuka\Desktop\Clone_Strabo\text_data\Results\tessearct_geojson.json'.
+AddPolygon Mathod Finish

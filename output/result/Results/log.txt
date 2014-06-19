@@ -1,0 +1,4 @@
+textIndentification Mathod Finish
+ExtractTextToGEOJSON Mathod Start SANJUALI
+ExtractTextToGEOJSON Mathod Finish
+CreateFeatureClassWithFields Mathod Start SIMA
