@@ -83,16 +83,16 @@ namespace ArcStrabo
             //  TODO: Sample code showing how to access button host
             //
             ArcMap.Application.CurrentTool = null;
-            ComboBoxLayerSelector layerNameCobo = ComboBoxLayerSelector.GetLayerNameComboBox();
+            ComboBoxLayerSelector layerNameCombo = ComboBoxLayerSelector.GetLayerNameComboBox();
 
             RasterLayer rasterlayer = new RasterLayer();
-            rasterlayer = ((RasterLayer)layerNameCobo.GetSelectedLayer());
+            rasterlayer = ((RasterLayer)layerNameCombo.GetSelectedLayer());
             //raster.Raster
             //RasterLayer raster2 = new RasterLayer();
             //raster2.CreateFromRaster(raster.Raster);
             //IMap map = ArcMap.Document.FocusMap;
             //map.AddLayer((ILayer)raster2);
-            //MessageBox.Show(layerNameCobo.selected_layer_name + " " + raster2.RowCount + " " + raster2.ColumnCount + " " + raster2.BandCount);
+            //MessageBox.Show(layerNameCombo.selected_layer_name + " " + raster2.RowCount + " " + raster2.ColumnCount + " " + raster2.BandCount);
             ColorSegmentationWorker cs = new ColorSegmentationWorker();
             try
             {

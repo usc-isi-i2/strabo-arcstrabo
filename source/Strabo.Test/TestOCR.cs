@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Strabo.Core.OCR;
+using Emgu.CV.OCR;
 
 namespace Strabo.Test
 {
@@ -12,6 +13,8 @@ namespace Strabo.Test
     {
         public static void test()
         {
+            Tesseract _ocr = new Tesseract("", "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
+        
             string dir = @"..\..\data\Results\";
             string fn = "US_U_12245_1_67_crop.png";
             //TextRecognitionWorker trw = new TextRecognitionWorker();

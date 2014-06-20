@@ -55,7 +55,6 @@ namespace ArcStrabo
             string straboPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableSTRABO_HOME, EnvironmentVariableTarget.Machine);
             string tessPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableTESS_DATA, EnvironmentVariableTarget.Machine);
 
-
             if (ArcStrabo2Extension.PathSet == false)
             {
                
@@ -70,6 +69,7 @@ namespace ArcStrabo
                     return;
                 }
 
+                ////Initialize directories
                 bool Initialize_straboPath_Correct = ArcStrabo2Extension.initialize_straboPath_directories(straboPath);
 
                 if (Initialize_straboPath_Correct == false)
@@ -78,76 +78,64 @@ namespace ArcStrabo
                     return;
                 }
                 ArcStrabo2Extension.PathSet = true;
-            }
-            
+            }    
 
             #region Text Recognition
             ////Save Positive and Negative Layer and making GeoJason File
-            ComboBoxLayerSelector layerNameCobo = ComboBoxLayerSelector.GetLayerNameComboBox();
-
+            ComboBoxLayerSelector layerNameCombo = ComboBoxLayerSelector.GetLayerNameComboBox();
+            
+            ////Select correct raster map layer
             RasterLayer rasterlayer = new RasterLayer();
-            rasterlayer = ((RasterLayer)layerNameCobo.GetSelectedLayer());
-
-            ArcStraboObject arcStraboObject = new ArcStraboObject();
+            rasterlayer = ((RasterLayer)layerNameCombo.GetSelectedLayer());
+            ArcStraboObject arcStraboObject = new ArcStraboObject();      /// order of these two lines??? 
             string input_data_source_directory = rasterlayer.FilePath;// arcStraboObject.findRasterLayerPath();
 
-            //string rasterPath = arcStraboObject.CreateDirectory(dir, "Data");
-            //string logPath = arcStraboObject.CreateDirectory(dir, "Log");
-
-            //Log.SetLogDir(System.IO.Path.GetTempPath());
+            ////Set Log Directory Path
             Log.SetLogDir(ArcStrabo2Extension.Log_Path);
-            //Log.SetOutputDir(System.IO.Path.GetTempPath());
             Log.SetOutputDir(ArcStrabo2Extension.Log_Path);
 
-            Log.WriteLine("MakingGeoJsonFile Mathod Start  SIMA");
-
+            Log.WriteLine("MakingTextLabelGeoJsonFile Method Start SIMA");
             IMap map = ArcMap.Document.FocusMap;
-            //arcStraboObject.MakingTextGeoJsonFile(rasterPath);
+            //ArcStraboObject arcStraboObject = new ArcStraboObject();   /// *Trying new placement of this line*
             arcStraboObject.MakingTextLabelGeoJsonFile(ArcStrabo2Extension.Text_Result_Path);
-            Log.WriteLine("MakingGeoJsonFile Mathod Finish");
+            Log.WriteLine("MakingTextLabelGeoJsonFile Method Finish");
 
-            ////run TextExtraction Layer from Strao.core and load raster Layer
-            Log.WriteLine("textLayerExtract Mathod Start SIMA");
+            ////Run TextExtraction Layer from Strabo.core and load raster Layer
+            Log.WriteLine("textLayerExtract Medthod Start SIMA");
             arcStraboObject.textLayerExtract(input_data_source_directory, ArcStrabo2Extension.Text_Result_Path);
-            Log.WriteLine("textLayerExtract Mathod Finish");
+            Log.WriteLine("textLayerExtract Method Finish");
 
-            Log.WriteLine("AddRasterLayer Mathod Start SIMA");
-            //arcStraboObject.AddRasterLayer(rasterPath, "Result.png");
+            Log.WriteLine("AddRasterLayer Method Start SIMA");
             arcStraboObject.AddRasterLayer(ArcStrabo2Extension.Text_Result_Path, ArcStrabo2Extension.TextLayerPNGFileName);
-            //string fn = "\\Result.png";
-            Log.WriteLine("AddRasterLayer Mathod Finish");
+            Log.WriteLine("AddRasterLayer Method Finish");
 
-            ///run TextIdentifier Method
-            Log.WriteLine("textIndentification Mathod Start SIMA");
+            ////Run TextIdentifier Method
+            Log.WriteLine("textIndentification Method Start SIMA");
             System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
-            //arcStraboObject.textIndentification(rasterPath + "\\", fn);
             arcStraboObject.textIndentification(ArcStrabo2Extension.Text_Result_Path + "\\", ArcStrabo2Extension.Intermediate_Result_Path + "\\", ArcStrabo2Extension.TextLayerPNGFileName);
             System.Windows.Forms.Cursor.Current = Cursors.Default;
-            Log.WriteLine("textIndentification Mathod Finish");
+            Log.WriteLine("textIndentification Method Finish");
 
-            ///OCR Part
-            Log.WriteLine("ExtractTextToGEOJSON Mathod Start SANJUALI");
+            ////OCR Part
+            Log.WriteLine("ExtractTextToGEOJSON Method Start SANJUALI");
             System.Windows.Forms.Cursor.Current = Cursors.AppStarting;
             Strabo.Core.OCR.WrapperTesseract eng = new Strabo.Core.OCR.WrapperTesseract(tessPath);
-            //string OCRPath = rasterPath + "\\Results";
-            //string OCRPath = ArcStrabo2Extension.Text_Result_Path;
             eng.ExtractTextToGEOJSON(ArcStrabo2Extension.Intermediate_Result_Path,ArcStrabo2Extension.Text_Result_Path,ArcStrabo2Extension.TesseractResultsJSONFileName);
-            Log.WriteLine("ExtractTextToGEOJSON Mathod Finish");
+            Log.WriteLine("ExtractTextToGEOJSON Method Finish");
             System.Windows.Forms.Cursor.Current = Cursors.Default;
 
-            /////Add Polygon of OCR Layer
-            Log.WriteLine("CreateFeatureClassWithFields Mathod Start SIMA");
-            //IWorkspace workspace = arcStraboObject.CreateShapefileWorkspace(rasterPath);
+            ////Add Polygon of OCR Layer
+            Log.WriteLine("CreateFeatureClassWithFields Method Start SIMA");
             IWorkspace workspace = arcStraboObject.CreateShapefileWorkspace(ArcStrabo2Extension.Text_Result_Path);
             IFeatureWorkspace featureworkspace = (IFeatureWorkspace)workspace;
             string tesseDataPath = ArcStrabo2Extension.Text_Result_Path + "\\" + ArcStrabo2Extension.TesseractResultsJSONFileName;
             IFeatureClass featureClass = arcStraboObject.CreateFeatureClassWithFields("OCRLayer", featureworkspace, tesseDataPath);
             IFeatureLayer featureLayer = arcStraboObject.CreateFeatureLayer(featureClass);
-            Log.WriteLine("CreateFeatureClassWithFields Mathod Finish");
+            Log.WriteLine("CreateFeatureClassWithFields Method Finish");
 
-            Log.WriteLine("AddPolygon Mathod Start");
+            Log.WriteLine("AddPolygon Method Start");
             arcStraboObject.AddPolygon(featureLayer, featureworkspace, tesseDataPath);
-            Log.WriteLine("AddPolygon Mathod Finish");
+            Log.WriteLine("AddPolygon Method Finish");
 
             Log.ArchiveLog();
             #endregion
@@ -157,10 +145,6 @@ namespace ArcStrabo
         {
             Enabled = ArcMap.Application != null;
         }
-
-        
-
-       
 
     }
 }

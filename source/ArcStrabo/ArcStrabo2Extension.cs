@@ -137,9 +137,9 @@ namespace ArcStrabo
             avEvent = null;
 
             // Update UI
-            ComboBoxLayerSelector layerNameCobo = ComboBoxLayerSelector.GetLayerNameComboBox();
-            if (layerNameCobo != null)
-                layerNameCobo.ClearAll();
+            ComboBoxLayerSelector layerNameCombo = ComboBoxLayerSelector.GetLayerNameComboBox();
+            if (layerNameCombo != null)
+                layerNameCombo.ClearAll();
 
         }
         internal static bool IsExtensionEnabled()
