@@ -105,7 +105,8 @@ namespace Strabo.Core.Utility
             }
             catch (Exception e)
             {
-
+                Log.WriteLine(e.Message);
+                Log.WriteLine(e.ToString());
             }
         }
         static public void DeleteAllDebug()
@@ -119,7 +120,8 @@ namespace Strabo.Core.Utility
             }
             catch (Exception e)
             {
-
+                Log.WriteLine(e.Message);
+                Log.WriteLine(e.ToString());
             }
         }
         static public void DeleteAllOutput()
@@ -133,7 +135,8 @@ namespace Strabo.Core.Utility
             }
             catch (Exception e)
             {
-
+                Log.WriteLine(e.Message);
+                Log.WriteLine(e.ToString());
             }
         }
         static public void Write(string input)
@@ -153,7 +156,7 @@ namespace Strabo.Core.Utility
                 Console.WriteLine(input);
             else
             {
-                StreamWriter sw = new StreamWriter(log_dir + "log.txt", true);
+                StreamWriter sw = new StreamWriter(log_dir + "\\" + "log.txt", true);
                 //sw.WriteLine("                      "+DateTime.Now);
                 sw.WriteLine(DateTime.Now+" "+input);
                 sw.Close();

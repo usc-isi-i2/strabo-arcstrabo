@@ -13,7 +13,7 @@ namespace Strabo.Test
     {
         public static void test()
         {
-            Tesseract _ocr = new Tesseract("", "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
+            //Tesseract _ocr = new Tesseract(@"C:\Emgu\emgucv-windows-universal-cuda 2.9.0.1922\bin\", "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
         
             string dir = @"..\..\data\Results\";
             string fn = "US_U_12245_1_67_crop.png";
