@@ -44,6 +44,7 @@ namespace ArcStrabo
         public static string Symbol_Result_Path = "\\result";
         public static string Log_Path = "\\log";
         public static string Output_Path = "\\output";
+        public static string Output_SubPath = "\\output";
         public static string Tessdata_Path;
         public static string Intermediate_Result_Path = "\\intermediate_result";
 
@@ -203,10 +204,13 @@ namespace ArcStrabo
             {
                 return false;
             }
-            ArcStrabo2Extension.Output_Path = _straboPath + ArcStrabo2Extension.Output_Path;
-            ArcStrabo2Extension.Text_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Text_Result_Path;
-            ArcStrabo2Extension.Log_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Log_Path;
-            ArcStrabo2Extension.Intermediate_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Intermediate_Result_Path;
+            if (ArcStrabo2Extension.Output_Path == ArcStrabo2Extension.Output_SubPath)
+            {
+                ArcStrabo2Extension.Output_Path = _straboPath + ArcStrabo2Extension.Output_Path;
+                ArcStrabo2Extension.Text_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Text_Result_Path;
+                ArcStrabo2Extension.Log_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Log_Path;
+                ArcStrabo2Extension.Intermediate_Result_Path = ArcStrabo2Extension.Output_Path + ArcStrabo2Extension.Intermediate_Result_Path;
+            }
             try
             {
                 // check Output_Path
