@@ -133,8 +133,6 @@ namespace ArcStrabo
 
             try
             {
-
-
                 IEnumLayer enumLayer = map.get_Layers(null, true);
                 ILayer layer = enumLayer.Next();
                 while (layer != null)
@@ -167,16 +165,14 @@ namespace ArcStrabo
                 Log.WriteLine(e.Message);
             }
             return path;
-
         }
         public void symbolFindRasterLayerPath(RasterMapInfo rasterInfo)
         {
+
             IMap map = ArcMap.Document.FocusMap;
 
             try
             {
-
-
                 IEnumLayer enumLayer = map.get_Layers(null, true);
                 ILayer layer = enumLayer.Next();
                 while (layer != null)
@@ -226,7 +222,7 @@ namespace ArcStrabo
                     }
                     catch (Exception e)
                     {
-
+                        Log.WriteLine(e.Message);
                         // throw;
                     }
                     layer = enumLayer.Next();
@@ -234,10 +230,8 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine(e.Message);
             }
-
 
         }
 
@@ -336,7 +330,6 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine(e.Message);
             }
 
@@ -357,8 +350,6 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 // Create a new FeatureLayer and assign a shapefile to it
                 IFeatureLayer featureLayer = new ESRI.ArcGIS.Carto.FeatureLayer();
                 featureLayer.FeatureClass = featureClass;
@@ -383,8 +374,6 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 //Define vertices
                 GeoJson geoJson = new GeoJson();
                 _featureInJSON = geoJson.readGeoJsonFile(dir);
@@ -395,8 +384,6 @@ namespace ArcStrabo
                 editWorkspace.StartEditOperation();
                 for (int j = 0; j < _featureInJSON.features.Count; j++)
                 {
-
-
                     IPoint pPoint1 = new ESRI.ArcGIS.Geometry.Point();
                     IPoint pPoint2 = new ESRI.ArcGIS.Geometry.Point();
                     IPoint pPoint3 = new ESRI.ArcGIS.Geometry.Point();
@@ -463,9 +450,7 @@ namespace ArcStrabo
             {
                 Log.WriteLine("AddPolygon: " + e.Message);
             }
-
         }
-
 
 
         /// <summary>
@@ -475,7 +460,6 @@ namespace ArcStrabo
         /// <param name="fileName"></param>
         public void AddRasterLayer(string path, string fileName)
         {
-
             IMap map = ArcMap.Document.FocusMap;
 
             try
@@ -496,12 +480,8 @@ namespace ArcStrabo
             }
             catch (System.Exception ex)
             {
-
                 Log.WriteLine("AddRasterLayer: " + ex.Message);
-
-
             }
-
         }
 
         /// <summary>
@@ -530,10 +510,8 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("AddShapeFileLayer: " + e.Message);
             }
-
         }
 
         /// <summary>
@@ -547,8 +525,6 @@ namespace ArcStrabo
             GeoJson geoJson = new GeoJson();
             try
             {
-
-
                 _featureInJSON = geoJson.readGeoJsonFile(dir);
 
                 // Instantiate a feature class description to get the required fields.
@@ -584,7 +560,6 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("CreateFeatureClassWithFields: " + e.Message);
             }
             return null;
@@ -619,14 +594,11 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 feild.alias = feild.name = fieldName;
                 feild.type = type.ToString();
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("setGeoJASONFeilds: " + e.Message);
             }
         }
@@ -635,8 +607,6 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 ESRI.ArcGIS.Carto.IGraphicsContainer graphicsContainer = (ESRI.ArcGIS.Carto.IGraphicsContainer)map; // Explicit Cast
                 ESRI.ArcGIS.Carto.IElement element = null;
 
@@ -651,7 +621,6 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("AddGraphicToMap: " + e.Message);
             }
         }
@@ -664,8 +633,6 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 if (sourceImageDir == "")
                     return;
 
@@ -683,8 +650,6 @@ namespace ArcStrabo
                 fillImageList(resultImageDir + "\\"+ArcStrabo2Extension.TextNegtiveLabelLayerJSONFileName, imgfnn_list, srcImage);
 
 
-
-
                 TextLayerExtractionTrainer tet = new TextLayerExtractionTrainer();
                 Log.SetStartTime();
                 List<Bitmap> result_list = new List<Bitmap>();
@@ -696,22 +661,17 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("textLayerExtract:  " + e.Message);
             }
         }
 
         private void fillImageList(string path, List<Bitmap> imgList, Image<Bgr, Byte> srcImage)
         {
-
-
             FeatureInJSON _featureInJSON;
             GeoJson geoJson = new GeoJson();
 
             try
             {
-
-
                 if (!File.Exists(path))
                     return;
                 _featureInJSON = geoJson.readGeoJsonFile(path);
@@ -731,44 +691,32 @@ namespace ArcStrabo
                     Bitmap cropedImage = img.Clone(rec, img.PixelFormat);
                     //cropedImage.Save(CreateDirectory(path, "Data") + "\\img" + j.ToString());
                     imgList.Add(cropedImage);
-
                 }
-
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("fillImageList: " + e.Message);
             }
-
         }
 
         public void textIndentification(string input_dir, string output_dir, string fn)
         {
             try
             {
-
-
                 TextDetectionWorker trw = new TextDetectionWorker();
                 trw.Apply(input_dir, output_dir, fn, 2.5, false);
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("textIndentification: " + e.Message);
             }
         }
 
-
-
         public string CreateDirectory(string current, string subDir)
         {
-
             DirectoryInfo parentInfo = System.IO.Directory.GetParent(current).Parent;
             try
             {
-
-
                 subDir = parentInfo.FullName + "\\" + subDir;
 
                 if (!System.IO.Directory.Exists(subDir))
@@ -780,12 +728,11 @@ namespace ArcStrabo
             }
             return subDir;
         }
+
         public IWorkspace CreateShapefileWorkspace(string dir)
         {
             try
             {
-
-
                 IWorkspaceFactory2 workspaceFactory = (IWorkspaceFactory2)new
                   ShapefileWorkspaceFactory();
 
@@ -801,7 +748,6 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("CreateShapefileWorkspace : " + e.Message);
             }
             return null;
@@ -813,8 +759,6 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 IWorkspaceFactory2 workspaceFactory = (IWorkspaceFactory2)new
                   ShapefileWorkspaceFactory();
 
@@ -829,15 +773,13 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("CreateShapefileWorkspace : " + e.Message);
             }
             return null;
         }
+ 
         public void MakingSymbolGeoJsonFile()
         {
-
-
             ///////////////////////////////////////////////////////////////
             //Setting current Map to access Layers, Feature Class and Features
             //build string builder to write on the ImageResultfile
@@ -854,12 +796,9 @@ namespace ArcStrabo
             {
                 while (layer != null)
                 {
-
-
-
-
                     if (layer.Name == "SymbolPositiveLabel")
                     {
+   
                         GeoJson geoJson = new GeoJson();
                         geoJson.featureInJson = new FeatureInJSON();
                         geoJson.featureInJson.displayFieldName = layer.Name;
@@ -913,22 +852,19 @@ namespace ArcStrabo
                             geoJson.featureInJson.features[i].geometry.rings[0, 4, 1] = iFeature.Extent.UpperLeft.Y;
                             if (iFeature.Extent.UpperLeft.Y < 0 && _rasterInfo.ratserNegative > 0)
                                 _rasterInfo.ratserNegative = -1;
-
                         }
                         geoJson.writeJsonFile(path);
 
                     }
                     layer = enumLayer.Next();
                 }
-
             }
             catch (Exception e)
             {
-
                 Log.WriteLine(e.Message);
             }
-
         }
+
         /// <summary>
         /// /////////////Converting pixels to Lat/Long
         /// </summary>
@@ -938,7 +874,6 @@ namespace ArcStrabo
         /// <param name="pixelY"></param>
         public void GetXY(double lat, double lng, out double pixelX, out double pixelY)
         {
-
             int MAP_HEIGHT = _rasterInfo.rasterHeight;
             int MAP_WIDTH = _rasterInfo.rasterWidth;
 
@@ -966,7 +901,6 @@ namespace ArcStrabo
 
             pixelX = (Math.Abs(w - lat)) * ewpix; //the difference between the western (left) edge of the box and the point in question, multiplied by pixels per point
             pixelY = (Math.Abs(n - lng)) * nspix; //the difference between the northern (top) edge of the box and the point in question, multiplied by pixels per point
-
         }
         /// <summary>
         /// ////////////Converting Lat/long to X and Y 
@@ -978,7 +912,6 @@ namespace ArcStrabo
 
         public void getLngLat(double x, double y, out  double lng, out  double lat)
         {
-
             int MAP_HEIGHT = _rasterInfo.rasterHeight;
             int MAP_WIDTH = _rasterInfo.rasterWidth;
 
@@ -1011,12 +944,8 @@ namespace ArcStrabo
 
         public void SymbolExtraction()
         {
-
             try
             {
-
-
-
                 List<Bitmap> imgfnp_list = new List<Bitmap>();
                 List<Bitmap> imgfnn_list = new List<Bitmap>();
 
@@ -1072,10 +1001,7 @@ namespace ArcStrabo
 
                     j++;
 
-
-
                 }
-
                 #region Geo-Spatial Project- Connection to DBpredia
                 if (_rasterInfo.rasterType != "Unknown")
                 {
@@ -1088,10 +1014,10 @@ namespace ArcStrabo
                     }
                 }
                 #endregion
+
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("textLayerExtract:  " + e.Message);
             }
         }
@@ -1118,8 +1044,6 @@ namespace ArcStrabo
 
             try
             {
-
-
                 if (!File.Exists(_rasterInfo.rasterData + "\\PositiveLayerInfo.json"))
                     return;
                 _featureInJSON = geoJson.readGeoJsonFile(_rasterInfo.rasterData + "\\PositiveLayerInfo.json");
@@ -1160,16 +1084,13 @@ namespace ArcStrabo
                     Bitmap resizedImage = new Bitmap(cropedImage, cropedImage.Width, cropedImage.Height);
                     resizedImage.Save(_rasterInfo.rasterIn + "\\element.png");
                     imgList.Add(cropedImage);
-
                 }
-
             }
+
             catch (Exception e)
             {
-
                 Log.WriteLine("fillImageList: " + e.Message);
             }
-
 
         }
 
@@ -1177,8 +1098,6 @@ namespace ArcStrabo
         {
             try
             {
-
-
                 //Define vertices
 
                 if (_rasterInfo.rasterType != "Unknown")
@@ -1197,8 +1116,6 @@ namespace ArcStrabo
 
                 for (int j = 0; j < count; j++)
                 {
-
-
                     IPoint pPoint1 = new ESRI.ArcGIS.Geometry.Point();
                     IPoint pPoint2 = new ESRI.ArcGIS.Geometry.Point();
                     IPoint pPoint3 = new ESRI.ArcGIS.Geometry.Point();
@@ -1297,7 +1214,6 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
-
                 Log.WriteLine("CreateFeatureClassWithFields: " + e.Message);
             }
             return null;
@@ -1305,7 +1221,6 @@ namespace ArcStrabo
 
         private HashSet<float[]> symbolRecognition(out Image<Gray, Byte> gElement, string path)
         {
-
             #region
 
             Stopwatch watch = Stopwatch.StartNew();

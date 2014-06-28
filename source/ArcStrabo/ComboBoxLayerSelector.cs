@@ -35,7 +35,6 @@ namespace ArcStrabo
 
         public ComboBoxLayerSelector()
         {
-
             s_comboBox = this;
             s_comboBox.Enabled = true;
         }

@@ -31,6 +31,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using Strabo.Core.OCR;
+using Strabo.Core.Utility;
 
 
 namespace Strabo.Core.OCR
@@ -47,7 +48,6 @@ namespace Strabo.Core.OCR
         /// </summary>
         public WrapperTesseract(string path)
         {
-
             // Variable value is set to parent directory of tessdata
             //string path = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -55,8 +55,8 @@ namespace Strabo.Core.OCR
             //Environment.SetEnvironmentVariable("TESSDATA_PREFIX", path); //This path should always end with a "/" or "\", e.g., TESSDATA_PREFIX="/usr/share/tesseract-ocr/"
 
             _ocr = new Tesseract(path, "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
-
         }
+
         private bool alphnumericratio(string temp)
         {
             string clean = Regex.Replace(temp, @"[^a-zA-Z0-9]", "");
@@ -122,8 +122,11 @@ namespace Strabo.Core.OCR
             catch (Exception exception)
             {
                 //MessageBox.Show(exception.Message);
+                Log.WriteLine(exception.Message);
+                Log.WriteLine(exception.ToString());
                 throw (exception);
             }
+
             try
             {
 
@@ -236,14 +239,14 @@ namespace Strabo.Core.OCR
                     GeoJson geoJson = new GeoJson();
                     geoJson.featureInJson = jsonFeatures;
                     geoJson.writeJsonFile(outputPath + "\\" + TesseractResultsJSONFileName);
-
-
                 }
 
             }
             catch (Exception exception)
             {
                 //MessageBox.Show(exception.Message);
+                Log.WriteLine(exception.Message);
+                Log.WriteLine(exception.ToString());
                 throw (exception);
             }
         }

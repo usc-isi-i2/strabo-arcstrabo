@@ -56,7 +56,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 oBJECTID = value;
             }
         }
@@ -68,7 +67,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 text = value;
             }
         }
@@ -80,7 +78,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 char_count = value;
             }
         }
@@ -92,7 +89,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 orientation = value;
             }
         }
@@ -104,7 +100,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 filename = value;
             }
         }
@@ -116,7 +111,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 susp_text = value;
             }
         }
@@ -128,7 +122,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 susp_char_count = value;
             }
         }
@@ -140,7 +133,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 mass_centerX = value;
             }
         }
@@ -152,7 +144,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 mass_centerY = value;
             }
         }
@@ -173,7 +164,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 wk_id = value;
             }
         }
@@ -185,7 +175,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 latestWk_id = value;
             }
         }
@@ -206,7 +195,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 vname = value;
             }
         }
@@ -218,7 +206,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 vtype = value;
             }
         }
@@ -230,7 +217,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 valias = value;
             }
         }
@@ -242,7 +228,6 @@ namespace Strabo.Core.OCR
             }
             set
             {
-
                 vlength = value;
             }
         }
@@ -270,8 +255,6 @@ namespace Strabo.Core.OCR
         }
         private string text;
 
-
-
         public string Text
         {
             get { return text; }
@@ -285,7 +268,6 @@ namespace Strabo.Core.OCR
             set { char_count = value; }
         }
         private double orientation;
-
 
         public double Orientation
         {

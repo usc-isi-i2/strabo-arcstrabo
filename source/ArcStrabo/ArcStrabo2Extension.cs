@@ -25,6 +25,7 @@ using System.Text;
 using System.IO;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Desktop.AddIns;
+using Strabo.Core.Utility;
 
 namespace ArcStrabo
 {
@@ -230,6 +231,8 @@ namespace ArcStrabo
             }
             catch (Exception e)
             {
+                Log.WriteLine(e.Message);
+                Log.WriteLine(e.ToString());
                 return false;
             }
         }
