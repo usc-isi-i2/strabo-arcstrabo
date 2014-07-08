@@ -126,6 +126,7 @@
     <Compile Include="ButtonSymbolRecognition.cs" />
     <Compile Include="ArcStraboObject.cs" />
     <Compile Include="ButtonTextExtraction.cs" />
+    <Compile Include="ButtonShowTessdataPrefix.cs" />
     <Compile Include="ComboBoxLayerSelector.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>

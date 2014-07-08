@@ -87,8 +87,17 @@ namespace ArcStrabo
             ////Select correct raster map layer
             RasterLayer rasterlayer = new RasterLayer();
             rasterlayer = ((RasterLayer)layerNameCombo.GetSelectedLayer());
-            ArcStraboObject arcStraboObject = new ArcStraboObject();      /// order of these two lines??? 
-            string input_data_source_directory = rasterlayer.FilePath;// arcStraboObject.findRasterLayerPath();
+            string input_data_source_directory;
+            try
+            {
+                input_data_source_directory = rasterlayer.FilePath; 
+            }
+            catch (Exception)
+            {
+                // Handle no input map error
+                MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoInputMap, "Input Map Error", MessageBoxButtons.OK);
+                return;
+            }
 
             ////Set Log Directory Path
             Log.SetLogDir(ArcStrabo2Extension.Log_Path);
@@ -96,7 +105,7 @@ namespace ArcStrabo
 
             Log.WriteLine("MakingTextLabelGeoJsonFile Method Start SIMA");
             IMap map = ArcMap.Document.FocusMap;
-            //ArcStraboObject arcStraboObject = new ArcStraboObject();   /// *Trying new placement of this line*
+            ArcStraboObject arcStraboObject = new ArcStraboObject();
             arcStraboObject.MakingTextLabelGeoJsonFile(ArcStrabo2Extension.Text_Result_Path);
             Log.WriteLine("MakingTextLabelGeoJsonFile Method Finish");
 
