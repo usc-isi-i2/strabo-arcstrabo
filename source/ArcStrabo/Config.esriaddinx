@@ -18,9 +18,9 @@
 
         <ComboBox id="USC_ArcStrabo_ComboBoxLayerSelector" class="ComboBoxLayerSelector" message="Input Map" caption="Input Map" tip="Click to select the input map" category="ArcStrabo2" image="" hintText="--Select Map Layer--" sizeString="--Select Map Layer--" itemSizeString="--Select Map Layer--"/>
 
-        <Button id="USC_ArcStrabo_ButtonSymbolRecognition" class="ButtonSymbolRecognition" message="Symbol Recognition" caption="Symbol Recognition" tip="Click to recognize map symbols" category="ArcStrabo2" image="Images\ButtonSymbolRecognition.png" />
-        <Button id="USC_ArcStrabo_ButtonTextExtraction" class="ButtonTextExtraction" message="Text Recognition" caption="Text Recognition" tip="Click to recognize map text" category="ArcStrabo2" image="Images\ButtonTextExtraction.png" />
-        <Button id="USC_ArcStrabo_ButtonColorSegmentation" class="ButtonColorSegmentation" message="Color Segmentation" caption="Color Segmentation" tip="Click to generate quantized maps" category="ArcStrabo2" image="Images\ButtonColorSegmentation.png" /> 
+        <Button id="USC_ArcStrabo_ButtonSymbolRecognition" class="ButtonSymbolRecognition" message="Symbol Recognition" caption="Symbol Recognition" tip="Click to recognize map symbols" category="ArcStrabo2" image="Images\ButtonSymbolRecognition2.png" />
+        <Button id="USC_ArcStrabo_ButtonTextExtraction" class="ButtonTextExtraction" message="Text Recognition" caption="Text Recognition" tip="Click to recognize map text" category="ArcStrabo2" image="Images\ButtonTextExtraction2.png" />
+        <Button id="USC_ArcStrabo_ButtonColorSegmentation" class="ButtonColorSegmentation" message="Color Segmentation" caption="Color Segmentation" tip="Click to generate quantized maps" category="ArcStrabo2" image="Images\ButtonColorSegmentation2.png" /> 
       </Commands>
       <Toolbars>
         <Toolbar id="ArcStrabo2_Toolbar" caption="ArcStrabo2" showInitially="true">

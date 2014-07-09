@@ -219,6 +219,15 @@
   <ItemGroup>
     <AddInContent Include="Images\ButtonColorSegmentation.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\ButtonTextExtraction2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\ButtonColorSegmentation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AddInContent Include="Images\ButtonSymbolRecognition2.png" />
+  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>esriAddIn</ZipFileExtension>
     <AddInTargetProduct>Desktop</AddInTargetProduct>
