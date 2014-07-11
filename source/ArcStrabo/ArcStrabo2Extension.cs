@@ -32,6 +32,8 @@ namespace ArcStrabo
     public class ArcStrabo2Extension : ESRI.ArcGIS.Desktop.AddIns.Extension
     {
         public static string ErrorMsgNoInputMap = "No input map has been selected from the drop-down menu in the ArcStrabo2 Toolbar." + "\n \n" + "Please select an input map for text extraction.";
+        public static string ErrorMsgNameTextLayer = "Unable to create unique name for TextLayer.png file";
+        public static string ErrorMsgNameOCRLayer = "Unable to create unique name for OCRLayer file";
         public static string ErrorMsgNoTable = "Please upload a data table for transformation";
         public static string ErrorMsgNoStraboHome = "Unable to access the environment variable " + EnvironmentVariableSTRABO_HOME;
         public static string ErrorMsgNoTess_Data = "Unable to access the environment variable " + EnvironmentVariableTESS_DATA;
@@ -40,7 +42,6 @@ namespace ArcStrabo
         public static string EnvironmentVariableSTRABO_HOME = "STRABO_HOME";
         public static string EnvironmentVariableTESS_DATA = "TESSDATA_PREFIX";
 
-        // Renuka: adding folders
         public static string Text_Result_Path = "\\result";
         public static string Result_Shapefile_Folder_Name = "ocr_shapefile";
         public static string Symbol_Result_Path = "\\result";
@@ -57,6 +58,7 @@ namespace ArcStrabo
         public static string TextNegtiveLabelLayerJSONFileName = "NegativeLayerInfo.json";
         public static string TesseractResultsJSONFileName = "tesseract_geojson.json";
         public static string TextLayerPNGFileName = "TextLayer.png";
+        public static string TextLayerOCRShapefile = "OCRLayer";
 
         public static bool PathSet = false;
 

@@ -138,7 +138,8 @@ namespace ArcStrabo
             IWorkspace workspace = arcStraboObject.CreateShapefileWorkspace(ArcStrabo2Extension.Text_Result_Path);
             IFeatureWorkspace featureworkspace = (IFeatureWorkspace)workspace;
             string tesseDataPath = ArcStrabo2Extension.Text_Result_Path + "\\" + ArcStrabo2Extension.TesseractResultsJSONFileName;
-            IFeatureClass featureClass = arcStraboObject.CreateFeatureClassWithFields("OCRLayer", featureworkspace, tesseDataPath);
+
+            IFeatureClass featureClass = arcStraboObject.CreateFeatureClassWithFields(ArcStrabo2Extension.TextLayerOCRShapefile, featureworkspace, tesseDataPath);
             IFeatureLayer featureLayer = arcStraboObject.CreateFeatureLayer(featureClass);
             Log.WriteLine("CreateFeatureClassWithFields Method Finish");
 

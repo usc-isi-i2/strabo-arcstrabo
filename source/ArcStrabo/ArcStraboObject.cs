@@ -147,7 +147,7 @@ namespace ArcStrabo
                     try
                     {
                         rasterLayer = (IRasterLayer)layer;
-                        if (rasterLayer.Name != "SymbolPositiveLabel" && rasterLayer.Name != "TextPositiveLabel" && rasterLayer.Name != "TextNegativeLabel" && rasterLayer.Name != "OCRLayer")
+                        if (rasterLayer.Name != "SymbolPositiveLabel" && rasterLayer.Name != "TextPositiveLabel" && rasterLayer.Name != "TextNegativeLabel" && rasterLayer.Name != ArcStrabo2Extension.TextLayerOCRShapefile)
 
                             path = rasterLayer.FilePath;
                     }
@@ -181,7 +181,7 @@ namespace ArcStrabo
                     try
                     {
                         rasterLayer = (IRasterLayer)layer;
-                        if (rasterLayer.Name != "SymbolPositiveLabel" && rasterLayer.Name != "TextPositiveLabel" && rasterLayer.Name != "TextNegativeLabel" && rasterLayer.Name != "OCRLayer")
+                        if (rasterLayer.Name != "SymbolPositiveLabel" && rasterLayer.Name != "TextPositiveLabel" && rasterLayer.Name != "TextNegativeLabel" && rasterLayer.Name != ArcStrabo2Extension.TextLayerOCRShapefile)
                         {
                             string dir = rasterInfo.rasterPath = rasterLayer.FilePath;
                             rasterInfo.rasterType = rasterLayer.VisibleExtent.SpatialReference.Name;
@@ -657,6 +657,26 @@ namespace ArcStrabo
                     result_list = tet.GUIProcessOneLayerOnly(srcimg, imgfnp_list, imgfnn_list, 4);
                 Console.WriteLine(Log.GetDurationInSeconds());
 
+                // Create a unique file name for each Result TextLayer by appending numbers until unique filename created
+                try
+                {
+                    int unique_number = 0;
+                    while (File.Exists(ArcStrabo2Extension.Text_Result_Path + "\\" + ArcStrabo2Extension.TextLayerPNGFileName))
+                    {
+                        unique_number += 1;
+                        if (File.Exists(ArcStrabo2Extension.Text_Result_Path + "\\" + ArcStrabo2Extension.TextLayerPNGFileName))
+                        {
+                            ArcStrabo2Extension.TextLayerPNGFileName = "TextLayer(" + unique_number.ToString() + ").png";
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.WriteLine(ArcStrabo2Extension.ErrorMsgNameTextLayer);
+                    Log.WriteLine(e.Message);
+                    Log.WriteLine(e.ToString());
+                }
+
                 result_list[0].Save(resultImageDir + "\\" + ArcStrabo2Extension.TextLayerPNGFileName);
             }
             catch (Exception e)
@@ -736,8 +756,29 @@ namespace ArcStrabo
                 IWorkspaceFactory2 workspaceFactory = (IWorkspaceFactory2)new
                   ShapefileWorkspaceFactory();
 
-                if (System.IO.Directory.Exists(dir + "\\"+ArcStrabo2Extension.Result_Shapefile_Folder_Name))
-                    System.IO.Directory.Delete(dir + "\\" + ArcStrabo2Extension.Result_Shapefile_Folder_Name, true);
+                //if (System.IO.Directory.Exists(dir + "\\"+ArcStrabo2Extension.Result_Shapefile_Folder_Name))
+                //    System.IO.Directory.Delete(dir + "\\" + ArcStrabo2Extension.Result_Shapefile_Folder_Name, true);
+
+                // create new folder for shapefile if one already exists
+                try
+                {
+                    int unique_number = 0;
+                    while (System.IO.Directory.Exists(dir + "\\" + ArcStrabo2Extension.Result_Shapefile_Folder_Name))
+                    {
+                        unique_number += 1;
+                        if (System.IO.Directory.Exists(dir + "\\" + ArcStrabo2Extension.Result_Shapefile_Folder_Name))
+                        {
+                            ArcStrabo2Extension.Result_Shapefile_Folder_Name = "ocr_shapefile(" + unique_number.ToString() + ")";
+                            ArcStrabo2Extension.TextLayerOCRShapefile = "OCRLayer(" + unique_number.ToString() + ")";
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.WriteLine(ArcStrabo2Extension.ErrorMsgNameOCRLayer);
+                    Log.WriteLine(e.Message);
+                    Log.WriteLine(e.ToString());
+                }
 
                 IWorkspaceName workspaceName = workspaceFactory.Create(dir,
                  ArcStrabo2Extension.Result_Shapefile_Folder_Name, null, 0);

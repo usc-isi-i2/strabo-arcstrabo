@@ -82,7 +82,7 @@ namespace ArcStrabo
             IWorkspace workspace = arcStraboObject.symbolCreateShapefileWorkspace();
             IFeatureWorkspace featureworkspace = (IFeatureWorkspace)workspace;
 
-            IFeatureClass featureClass = arcStraboObject.CreateFeatureClassWithFieldsGeoRef("OCRLayer", featureworkspace);
+            IFeatureClass featureClass = arcStraboObject.CreateFeatureClassWithFieldsGeoRef(ArcStrabo2Extension.TextLayerOCRShapefile, featureworkspace);
             IFeatureLayer featureLayer = arcStraboObject.CreateFeatureLayer(featureClass);
             Log.WriteLine("CreateFeatureClassWithFields Mathod Finish");
 
