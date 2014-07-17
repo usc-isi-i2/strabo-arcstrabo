@@ -99,6 +99,15 @@ namespace ArcStrabo
                 return;
             }
 
+            ////Select language from combo box in toolbar
+            ComboBoxLanguageSelector languageNameCombo = ComboBoxLanguageSelector.GetLanguageNameComboBox();
+            string lng = languageNameCombo.Get_selected_language();
+            if (lng == null)
+            {
+                MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoInputLanguage, "Input Language Error", MessageBoxButtons.OK);
+                return;
+            }
+
             ////Set Log Directory Path
             Log.SetLogDir(ArcStrabo2Extension.Log_Path);
             Log.SetOutputDir(ArcStrabo2Extension.Log_Path);
@@ -121,6 +130,15 @@ namespace ArcStrabo
             ////Run TextIdentifier Method
             Log.WriteLine("textIndentification Method Start SIMA");
             System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+
+            ///// Attempting to create cancel feature window
+            //DialogResult result = MessageBox.Show("Text Recognition is running.", "Application Running", MessageBoxButtons.OKCancel);
+            //if (result == DialogResult.Cancel)
+            //{
+            //    return;
+            //}
+            //else if (result == DialogResult.OK)
+
             arcStraboObject.textIndentification(ArcStrabo2Extension.Text_Result_Path + "\\", ArcStrabo2Extension.Intermediate_Result_Path + "\\", ArcStrabo2Extension.TextLayerPNGFileName);
             System.Windows.Forms.Cursor.Current = Cursors.Default;
             Log.WriteLine("textIndentification Method Finish");
@@ -128,8 +146,18 @@ namespace ArcStrabo
             ////OCR Part
             Log.WriteLine("ExtractTextToGEOJSON Method Start SANJUALI");
             System.Windows.Forms.Cursor.Current = Cursors.AppStarting;
-            Strabo.Core.OCR.WrapperTesseract eng = new Strabo.Core.OCR.WrapperTesseract(tessPath);
-            eng.ExtractTextToGEOJSON(ArcStrabo2Extension.Intermediate_Result_Path,ArcStrabo2Extension.Text_Result_Path,ArcStrabo2Extension.TesseractResultsJSONFileName);
+
+            //// Select language from combo box in toolbar
+            //ComboBoxLanguageSelector languageNameCombo = ComboBoxLanguageSelector.GetLanguageNameComboBox();
+            //string lng = languageNameCombo.Get_selected_language();
+            //if (lng == null)
+            //{
+            //    MessageBox.Show(ArcStrabo2Extension.ErrorMsgNoInputLanguage, "Input Language Error", MessageBoxButtons.OK);
+            //    return;
+            //}
+            Strabo.Core.OCR.WrapperTesseract language = new Strabo.Core.OCR.WrapperTesseract(tessPath, lng);
+            /// Strabo.Core.OCR.WrapperTesseract language = new Strabo.Core.OCR.WrapperTesseract(tessPath);
+            language.ExtractTextToGEOJSON(ArcStrabo2Extension.Intermediate_Result_Path,ArcStrabo2Extension.Text_Result_Path,ArcStrabo2Extension.TesseractResultsJSONFileName);
             Log.WriteLine("ExtractTextToGEOJSON Method Finish");
             System.Windows.Forms.Cursor.Current = Cursors.Default;
 

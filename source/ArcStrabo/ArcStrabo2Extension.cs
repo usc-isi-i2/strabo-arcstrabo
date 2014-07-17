@@ -32,6 +32,7 @@ namespace ArcStrabo
     public class ArcStrabo2Extension : ESRI.ArcGIS.Desktop.AddIns.Extension
     {
         public static string ErrorMsgNoInputMap = "No input map has been selected from the drop-down menu in the ArcStrabo2 Toolbar." + "\n \n" + "Please select an input map for text extraction.";
+        public static string ErrorMsgNoInputLanguage = "No input language has been selected from the drop-down menu in the ArcStrabo2 Toolbar." + "\n \n" + "Please select a language for text extraction.";
         public static string ErrorMsgNameTextLayer = "Unable to create unique name for TextLayer.png file";
         public static string ErrorMsgNameOCRLayer = "Unable to create unique name for OCRLayer file";
         public static string ErrorMsgNoTable = "Please upload a data table for transformation";
@@ -126,7 +127,8 @@ namespace ArcStrabo
             // Update the UI
             m_map = ArcMap.Document.FocusMap;
 
-            FillComboBox();
+            FillLayerComboBox();
+            FillLanguageComboBox();
         }
 
         private void Uninitialize()
@@ -167,7 +169,7 @@ namespace ArcStrabo
         private void AvEvent_ItemAdded(object Item)
         {
             m_map = ArcMap.Document.FocusMap;
-            FillComboBox();
+            FillLayerComboBox();
         }
 
         private void AVEvents_FocusMapChanged()
@@ -175,7 +177,7 @@ namespace ArcStrabo
             Initialize();
         }
 
-        private void FillComboBox()
+        private void FillLayerComboBox()
         {
             ComboBoxLayerSelector layerNameCombo = ComboBoxLayerSelector.GetLayerNameComboBox();
             if (layerNameCombo == null)
@@ -197,6 +199,20 @@ namespace ArcStrabo
                 }
             }
         }
+
+        private void FillLanguageComboBox()
+        {
+            ComboBoxLanguageSelector languageNameCombo = ComboBoxLanguageSelector.GetLanguageNameComboBox();
+            if (languageNameCombo == null)
+                return;
+
+            languageNameCombo.ClearAll();
+
+            languageNameCombo.AddItem("English");
+            languageNameCombo.AddItem("Farsi");
+            languageNameCombo.AddItem("Chinese");
+        }
+
         private static ArcStrabo2Extension GetExtension()
         {
             return s_extension;
