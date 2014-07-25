@@ -54,7 +54,7 @@ namespace Strabo.Core.OCR
             //Path should be same as TESSDATA folder
             //Environment.SetEnvironmentVariable("TESSDATA_PREFIX", path); //This path should always end with a "/" or "\", e.g., TESSDATA_PREFIX="/usr/share/tesseract-ocr/"
 
-            _ocr = new Tesseract(path, lng, Tesseract.OcrEngineMode.OEM_DEFAULT);//.OEM_TESSERACT_CUBE_COMBINED);
+            _ocr = new Tesseract(path, lng, Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
             ///_ocr = new Tesseract(path, "eng", Tesseract.OcrEngineMode.OEM_TESSERACT_CUBE_COMBINED);
         }
 

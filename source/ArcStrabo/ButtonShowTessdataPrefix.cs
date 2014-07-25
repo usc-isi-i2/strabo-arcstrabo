@@ -51,7 +51,7 @@ namespace ArcStrabo
     {
         protected override void OnClick()
         {
-            string tessPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableTESS_DATA, EnvironmentVariableTarget.Machine);
+            string tessPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableTESS_DATA, EnvironmentVariableTarget.User);
             if (!string.IsNullOrEmpty(tessPath))
             {
                 ArcMap.Application.CurrentTool = null;

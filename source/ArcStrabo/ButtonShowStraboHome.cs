@@ -51,7 +51,7 @@ namespace ArcStrabo
     {
         protected override void OnClick()
         {
-            string straboPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableSTRABO_HOME, EnvironmentVariableTarget.Machine);
+            string straboPath = Environment.GetEnvironmentVariable(ArcStrabo2Extension.EnvironmentVariableSTRABO_HOME, EnvironmentVariableTarget.User);
             if (!string.IsNullOrEmpty(straboPath))
             {
                 ArcMap.Application.CurrentTool = null;

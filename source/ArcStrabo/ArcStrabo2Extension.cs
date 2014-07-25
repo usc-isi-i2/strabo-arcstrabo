@@ -41,7 +41,7 @@ namespace ArcStrabo
         public static string ErrorMsgNoStraboHomeWritePermission = "Unable to write files to " + EnvironmentVariableSTRABO_HOME + ". Please make sure you have the write permission.";
 
         public static string EnvironmentVariableSTRABO_HOME = "STRABO_HOME";
-        public static string EnvironmentVariableTESS_DATA = "TESSDATA_PREFIX";
+        public static string EnvironmentVariableTESS_DATA = "TESSDATA_HOME";
 
         public static string Text_Result_Path = "\\result";
         public static string Result_Shapefile_Folder_Name = "ocr_shapefile";
