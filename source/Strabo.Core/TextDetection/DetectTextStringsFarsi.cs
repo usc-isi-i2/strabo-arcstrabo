@@ -59,7 +59,7 @@ namespace Strabo.Core.TextDetection
 
             MyConnectedComponentsAnalysisFast.MyBlobCounter char_bc = new MyConnectedComponentsAnalysisFast.MyBlobCounter();
             List<MyConnectedComponentsAnalysisFast.MyBlob> char_blobs = char_bc.GetBlobs(srcimg);
-            List<MyConnectedComponentsAnalysisFast.MyBlob> char_blobs2 = char_bc.GetBlobs(srcimg);
+          //  List<MyConnectedComponentsAnalysisFast.MyBlob> char_blobs2 = char_bc.GetBlobs(srcimg);
 
 
             ushort[] char_labels = char_bc.objectLabels;
@@ -85,7 +85,7 @@ namespace Strabo.Core.TextDetection
                     initial_string_list[char_blobs[i].string_id].AddChar(char_blobs[i]);
                 }
             }
-
+/*
             String BlobInside = "";
             ////Added Part by Narges Honarvar Nazari ////////
           String  Output_dir = @"C:\Users\nhonarva\Desktop\strabohome\output\";
@@ -105,7 +105,7 @@ namespace Strabo.Core.TextDetection
 
 
             //////(char_blobs[i].string_id != char_blobs[j].string_id) 
- /*          
+          
             /////// Investigating which blobs can be dot ////////
             for (int i = 0; i < char_blobs.Count; i++)
             {
@@ -132,7 +132,7 @@ namespace Strabo.Core.TextDetection
 
                                     BlobInside = BlobInside + j+ Environment.NewLine;
                                  
-
+/*
                                     Rectangle FirstRectangle = new Rectangle();
                                     FirstRectangle.Location = new Point(char_blobs[i].bbx.X, char_blobs[i].bbx.Y);
                                     FirstRectangle.Size = new Size(char_blobs[i].bbx.Width, char_blobs[i].bbx.Height);
@@ -171,8 +171,8 @@ namespace Strabo.Core.TextDetection
                                     if (SizeRatio<25)
 
                                         initial_string_list[char_blobs[i].string_id].AddChar(char_blobs[j]);
-
-            
+*/
+/*            
                                     if ((char_blobs[j].bbx.Width < 10 || char_blobs[j].bbx.Height < min_height))
                                     {
                                         initial_string_list[char_blobs[i].string_id].AddChar(char_blobs[j]);
@@ -237,12 +237,12 @@ namespace Strabo.Core.TextDetection
             System.IO.File.WriteAllText(@"C:\Users\nhonarva\Desktop\MySamples\WriteText1.txt", BlobInside);
 
 
-            */
+            
          
             /////// Investigating which blobs can be dot ////////
 
             ////Added Part by Narges Honarvar Nazari ////////
-
+*/
             for (int i = 0; i < initial_string_list.Count; i++)
             {
                 if ((initial_string_list[i].char_list.Count == 0) )

@@ -14,7 +14,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Strabo.Core.ImageProcessing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.Threading;
 
+using Emgu.CV.Structure;
+using Emgu.CV;
+
+using Strabo.Core.Utility;
+using Strabo.Core.ImageProcessing;
 
 
 namespace Strabo.Core.TextDetection
@@ -46,6 +65,7 @@ namespace Strabo.Core.TextDetection
         int iteration_counter = 0;
 
         int minimum_distance_between_CCs_in_string = 2;
+        int Counter = 0;
 
         public ConditionalDilationFarsi() { }
         public void kernel(object step)
@@ -284,7 +304,7 @@ namespace Strabo.Core.TextDetection
             for (int i = 0; i < width * height; i++)
                 char_labels[i] = (short)(char_bc.objectLabels[i]);
             // first run
-            // Log.WriteBitmap2Debug(Print(), "k1_");
+             //Log.WriteBitmap2Debug(Print(), "k1_");
             k1();
             // Log.WriteBitmap2Debug(Print(), "k1_" + 0);
             iteration_counter = 1;
@@ -292,6 +312,13 @@ namespace Strabo.Core.TextDetection
             {
                 k1();
                 iteration_counter++;
+                /*
+                Bitmap resultimg = Print();
+                Bitmap IntermediateResult = new Bitmap(resultimg);
+                string Output_dir = @"C:\Users\nhonarva\Desktop\ConditionalDilationIntermediateResult\";
+                Graphics g = Graphics.FromImage(IntermediateResult);
+                Log.WriteBitmap2FolderExactFileName(Output_dir, IntermediateResult, "Number of Image : " + Counter);
+                 * */
                 // Log.WriteBitmap2Debug(Print(), "k1_" + iteration_counter);
             }
             Print(outImagePath);
@@ -300,8 +327,17 @@ namespace Strabo.Core.TextDetection
 
         public void IdentifyExpendableCharBlobs()
         {
+          
             short_char_blob_idx_set.Clear();
             Bitmap resultimg = Print();
+            //// Added Part ///////
+
+            Bitmap IntermediateResult = new Bitmap(resultimg);
+            string Output_dir = @"C:\Users\nhonarva\Desktop\ConditionalDilationIntermediateResult\";
+            Graphics g = Graphics.FromImage(IntermediateResult);
+            Log.WriteBitmap2FolderExactFileName(Output_dir, IntermediateResult, "Number of Image : " + Counter);
+            Counter++;
+            //////Added Part ///////
             resultimg = ImageUtils.InvertColors(resultimg);
 
             MyConnectedComponentsAnalysisFast.MyBlobCounter string_bc = new MyConnectedComponentsAnalysisFast.MyBlobCounter();

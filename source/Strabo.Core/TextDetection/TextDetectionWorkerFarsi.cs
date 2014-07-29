@@ -107,7 +107,7 @@ namespace Strabo.Core.TextDetection
             //if (!Directory.Exists(dir + "Results"))
             //    Directory.CreateDirectory(dir + "Results");
             this.output_dir = output_dir;
-            Bitmap srcimg = new Bitmap(@"C:\Users\nhonarva\Desktop\MySamples\T-crop.png");
+            Bitmap srcimg = new Bitmap(@"C:\Users\nhonarva\Desktop\MySamples\T-crop_1.png");
           //  Bitmap srcimg = new Bitmap(input_dir + fn);
 
             //Log.DeleteAll(output_dir);

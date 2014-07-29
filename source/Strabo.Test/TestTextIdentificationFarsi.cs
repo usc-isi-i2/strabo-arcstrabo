@@ -19,7 +19,7 @@ namespace Strabo.Test
             //trw.Apply(dir, fn, 2.5, false);
 
             TextDetectionWorkerFarsi TestWorker = new TextDetectionWorkerFarsi();
-            TestWorker.Apply(Input_dir , Output_dir , fn , 2.4 , false);
+            TestWorker.Apply(Input_dir , Output_dir , fn , 2 , false);
 
 
         }
