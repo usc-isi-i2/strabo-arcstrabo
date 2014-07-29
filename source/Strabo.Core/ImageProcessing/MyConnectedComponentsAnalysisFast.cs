@@ -62,7 +62,7 @@ namespace Strabo.Core.ImageProcessing
         public class MyBlobCounter
         {
             public ushort objectsCount;
-            public ushort[] objectLabels;
+            public ushort[] objectLabels; // narges
             public int[, , ,] bbx;
             public int[] black;
             public int[] white;
