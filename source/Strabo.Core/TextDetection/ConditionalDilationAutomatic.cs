@@ -60,25 +60,26 @@ namespace Strabo.Core.TextDetection
         int minimum_distance_between_CCs_in_string = 2;
 
         public ConditionalDilationAutomatic() { }
-        public void kernel(object step)
+        public void kernel(object step) // expand CC areas
         {
-            // expand CC areas
+            // multi-threading setup
             int delta_y = height / (int)tnum;
             int start_y = delta_y * (int)step;
             int stop_y = start_y + delta_y;
             if ((int)step == tnum - 1) stop_y = height;
+
             for (int j = start_y; j < stop_y; j++)
                 for (int i = 0; i < width; i++)
                 {
                     if (char_labels[j * width + i] == 0) //bg
                     {
                         HashSet<short> connected_char_blob_idx_set = new HashSet<short>();
-                        for (int x = i - 1; x <= i + 1; x++)
+                        for (int x = i - 1; x <= i + 1; x++) // check 8 neighboors
                             for (int y = j - 1; y <= j + 1; y++)
                             {
-                                if (x < 0 || x >= width || y < 0 || y >= height) continue;
+                                if (x < 0 || x >= width || y < 0 || y >= height) continue; // outside image boundaries
                                 int idx = y * width + x;
-                                if (char_labels[idx] != 0 && expendable_char_blob_idx_set.Contains(char_labels[idx] - 1))
+                                if (char_labels[idx] != 0 && expendable_char_blob_idx_set.Contains(char_labels[idx] - 1)) //narges
                                     connected_char_blob_idx_set.Add((short)(char_labels[idx] - 1));
                             }
                         // 0 connecting pixels, do not expand
@@ -141,9 +142,9 @@ namespace Strabo.Core.TextDetection
                         char_labels_confirmation[j * width + i] = true;
                 }
         }
-        public bool BreakingAngel(int idx1, int idx2)
+        public bool BreakingAngle(int idx1, int idx2)
         {
-            if (connected_char_blob_idx_set_list[idx1].Count == 0 &&
+            if (connected_char_blob_idx_set_list[idx1].Count == 0 && // idx1 and idx2 do not connect to anyone else
                 connected_char_blob_idx_set_list[idx2].Count == 0)
                 return false;
             if (connected_char_blob_idx_set_list[idx1].Contains(idx2) ||
@@ -152,11 +153,11 @@ namespace Strabo.Core.TextDetection
 
             int idx11 = -1;
             if (connected_char_blob_idx_set_list[idx1].Count == 1)
-                idx11 = connected_char_blob_idx_set_list[idx1].First();
+                idx11 = connected_char_blob_idx_set_list[idx1].First(); // the list has exactly one element
 
             int idx22 = -1;
             if (connected_char_blob_idx_set_list[idx2].Count == 1)
-                idx22 = connected_char_blob_idx_set_list[idx2].First();
+                idx22 = connected_char_blob_idx_set_list[idx2].First(); // the list has exactly one element
 
             double angle1 = 0;
             if (idx11 != -1)
@@ -170,13 +171,13 @@ namespace Strabo.Core.TextDetection
         }
         public int FindLabelForTheBiggestCharBlob(HashSet<short> char_blob_idx_set)
         {
-            int idx1 = char_blob_idx_set.First();
+            int idx1 = char_blob_idx_set.First(); // char_blob_idx_set has exactly two elements
             int idx2 = char_blob_idx_set.Last();
             // check if any of the connecting CC has two neighbors already
             if ((connected_char_blob_idx_set_list[idx1].Count == 2 && !connected_char_blob_idx_set_list[idx1].Contains(idx2))
                 || (connected_char_blob_idx_set_list[idx2].Count == 2 && !connected_char_blob_idx_set_list[idx2].Contains(idx1)))
                 return 0;
-            if (BreakingAngel(idx1, idx2)) return 0;
+            if (BreakingAngle(idx1, idx2)) return 0;
             // check for size ratio
             int size2 = (int)(char_blob_idx_max_size_table[idx2]);
             int size1 = (int)(char_blob_idx_max_size_table[idx1]);
@@ -194,23 +195,23 @@ namespace Strabo.Core.TextDetection
         public bool ValidateConnection(HashSet<short> char_blob_idx_set)
         {
             // check if it has a weak link
-            int idx1 = char_blob_idx_set.First();
+            int idx1 = char_blob_idx_set.First(); // the set has exactly two elements
             int idx2 = char_blob_idx_set.Last();
 
             // check regular stuff
             if (FindLabelForTheBiggestCharBlob(char_blob_idx_set) != 0)
             {
-                if (weak_link_set.Count > 0) // now I know the real connecting nodes
-                {
-                    // the second confirmation check
-                    if (weak_link_set.Contains(idx1 + ":" + idx2)
-                        && weak_link_set.Contains(idx2 + ":" + idx1))
-                    {
-                        connected_char_blob_idx_set_list[idx1].Remove(idx2);
-                        connected_char_blob_idx_set_list[idx2].Remove(idx1);
-                        return false;
-                    }
-                }
+                //if (weak_link_set.Count > 0) // now I know the real connecting nodes
+                //{
+                //    // the second confirmation check
+                //    if (weak_link_set.Contains(idx1 + ":" + idx2)
+                //        && weak_link_set.Contains(idx2 + ":" + idx1))
+                //    {
+                //        connected_char_blob_idx_set_list[idx1].Remove(idx2);
+                //        connected_char_blob_idx_set_list[idx2].Remove(idx1);
+                //        return false;
+                //    }
+                //}
                 connected_char_blob_idx_set_list[idx1].Add(idx2);
                 connected_char_blob_idx_set_list[idx2].Add(idx1);
                 return true;
@@ -280,7 +281,9 @@ namespace Strabo.Core.TextDetection
             srcimg = ImageUtils.InvertColors(srcimg);
 
             minimum_distance_between_CCs_in_string = iteration;
+
             MyConnectedComponentsAnalysisFast.MyBlobCounter char_bc = new MyConnectedComponentsAnalysisFast.MyBlobCounter();
+ 
             this.char_blobs = char_bc.GetBlobs(srcimg);
             this.char_labels = new short[width * height];
             // Log.WriteBitmap2Debug(Printnumb(), "num");
@@ -288,8 +291,8 @@ namespace Strabo.Core.TextDetection
             // initialize
             for (int i = 0; i < char_blobs.Count; i++)
             {
-                char_blob_idx_max_size_table.Add(i, Math.Max(char_blobs[i].bbx.Width, char_blobs[i].bbx.Height));
-                expendable_char_blob_idx_set.Add(i);
+                char_blob_idx_max_size_table.Add(i, Math.Max(char_blobs[i].bbx.Width, char_blobs[i].bbx.Height)); // original size of the character 
+                expendable_char_blob_idx_set.Add(i); 
                 connected_char_blob_idx_set_list.Add(new HashSet<int>());
             }
             original_char_labels = char_bc.objectLabels;
