@@ -54,25 +54,15 @@ namespace ArcStrabo
         };
 
 
-        //internal void AddItem(string lng)
-        //{
-        //    s_comboBox.Add("English");
-        //    s_comboBox.Add("Farsi");
-        //    s_comboBox.Add("Chinese");
-        //}
-
-
         internal void AddItem(string lng)
         {
             s_comboBox.Add(lng);
         }
 
+
         internal void ClearAll()
         {
-            //   m_selAllCookie = -1;
             s_comboBox.Clear();
-            //s_comboBox.Add("Select a map");
-
         }
 
 
@@ -84,19 +74,9 @@ namespace ArcStrabo
 
         protected override void OnSelChange(int cookie)
         {
-            //if (cookie == -1)
-            //    return;
 
             foreach (ComboBox.Item item in this.items)
             {
-                //IRasterLayer fl = item.Tag as IRasterLayer;
-                //if (fl == null)
-                //    continue;
-
-                //string lng = item.Tag as string;
-                //if (lng == null)
-                //    //continue;
-
                 if (cookie == item.Cookie)
                 {
                     selected_language = item.Caption;
@@ -109,27 +89,6 @@ namespace ArcStrabo
 
         }
 
-        //public string GetSelectedLanguage()
-        //{
-        //    foreach (ComboBox.Item item in this.items)
-        //    {
-        //        //IRasterLayer fl = item.Tag as IRasterLayer;
-        //        //if (fl == null)
-        //        //    continue;
-
-        //        string lng = item.Tag as string;
-        //        if (lng == null)
-        //            //continue;
-
-        //        if (item.Caption == selected_language)
-        //        {
-        //            return item.Tag as string;
-
-        //        }
-
-        //    }
-        //    return null;
-        //}
 
         public string Get_selected_language()
         {

@@ -14,10 +14,10 @@
     <ArcMap>
       <Commands>
         <Button id="USC_ArcStrabo_ButtonShowStraboHome" class="ButtonShowStraboHome" message="Strabo Directory" caption="Strabo Directory" tip="Click to show the path of environment variable STRABO_HOME" category="ArcStrabo2" />
-        <Button id="USC_ArcStrabo_ButtonShowTessdataPrefix" class="ButtonShowTessdataPrefix" message="Tessdata Directory" caption="Tessdata Directory" tip="Click to show the path of the environment variable TESSDATA_PREFIX" category="ArcStrabo2" />
+        <Button id="USC_ArcStrabo_ButtonShowTessdataPrefix" class="ButtonShowTessdataPrefix" message="Tessdata Directory" caption="Tessdata Directory" tip="Click to show the path of the environment variable TESSDATA_HOME" category="ArcStrabo2" />
 
         <ComboBox id="USC_ArcStrabo_ComboBoxLayerSelector" class="ComboBoxLayerSelector" message="Input Map" caption="Input Map" tip="Click to select the input map" category="ArcStrabo2" image="" hintText="--Select Map Layer--" sizeString="--Select Map Layer--" itemSizeString="--Select Map Layer--"/>
-        <ComboBox id="USC_ArcStrabo_ComboBoxLanguageSelector" class="ComboBoxLanguageSelector" message="Language" caption="Language" tip="Click to select the recognition language" category="ArcStrabo2" image="" hintText="Select Language" sizeString="Select Language" itemSizeString="Select Language" />
+        <ComboBox id="USC_ArcStrabo_ComboBoxLanguageSelector" class="ComboBoxLanguageSelector" message="Language" caption="Language" tip="Click to select the recognition language" category="ArcStrabo2" image="" hintText="--Select Language--" sizeString="--Select Language--" itemSizeString="--Select Language--" />
         
         <Button id="USC_ArcStrabo_ButtonSymbolRecognition" class="ButtonSymbolRecognition" message="Symbol Recognition" caption="Symbol Recognition" tip="Click to recognize map symbols" category="ArcStrabo2" image="Images\ButtonSymbolRecognition2.png" />
         <Button id="USC_ArcStrabo_ButtonTextExtraction" class="ButtonTextExtraction" message="Text Recognition" caption="Text Recognition" tip="Click to recognize map text" category="ArcStrabo2" image="Images\ButtonTextExtraction2.png" />
