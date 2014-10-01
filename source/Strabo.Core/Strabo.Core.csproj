@@ -298,16 +298,13 @@
     <Compile Include="SymbolRecognition\DBpedia.cs" />
     <Compile Include="SymbolRecognition\DrawMatches.cs" />
     <Compile Include="TextDetection\ConditionalDilationAutomatic.cs" />
-    <Compile Include="TextDetection\ConditionalDilationChinese.cs" />
     <Compile Include="TextDetection\ConditionalDilationFarsi.cs" />
     <Compile Include="TextDetection\DetectTextStrings.cs" />
-    <Compile Include="TextDetection\DetectTextStringsChinese.cs" />
     <Compile Include="TextDetection\DetectTextStringsFarsi.cs" />
     <Compile Include="TextDetection\Geometry.cs" />
     <Compile Include="TextDetection\MergeTextStrings.cs" />
     <Compile Include="TextDetection\MultiThreadsSkewnessDetection.cs" />
     <Compile Include="TextDetection\TextDetectionWorker.cs" />
-    <Compile Include="TextDetection\TextDetectionWorkerChinese.cs" />
     <Compile Include="TextDetection\TextDetectionWorkerFarsi.cs" />
     <Compile Include="TextDetection\TextString.cs" />
     <Compile Include="TextLayerExtraction\ColorDecompositionFast.cs" />
