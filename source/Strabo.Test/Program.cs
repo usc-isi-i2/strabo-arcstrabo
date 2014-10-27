@@ -21,8 +21,8 @@ namespace Strabo.Test
             //TestTextLayerSeparation.textLayerExtract();
             
             //TestTextIdentification.test();
-            //TestColorSegmentation.test("");
-            TestOCR.test();
+            TestColorSegmentation.test("");
+            //TestOCR.test();
 
             //if (args.Length == 0)
             //{
@@ -34,7 +34,7 @@ namespace Strabo.Test
             //}
 
            
-            TestYourEmguCVSetting();
+            //TestYourEmguCVSetting();
         }
 
         /// <summary>

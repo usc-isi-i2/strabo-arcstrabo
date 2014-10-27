@@ -291,7 +291,7 @@ namespace Strabo.Core.TextDetection
             // initialize
             for (int i = 0; i < char_blobs.Count; i++)
             {
-                char_blob_idx_max_size_table.Add(i, Math.Max(char_blobs[i].bbx.Width, char_blobs[i].bbx.Height)); // original size of the character 
+                char_blob_idx_max_size_table.Add(i, Math.Max(char_blobs[i].bbx.Width, char_blobs[i].bbx.Height)); // original size of the character //narges
                 expendable_char_blob_idx_set.Add(i); 
                 connected_char_blob_idx_set_list.Add(new HashSet<int>());
             }
