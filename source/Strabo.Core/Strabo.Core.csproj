@@ -131,101 +131,101 @@
       <HintPath>..\..\..\..\Source\Repos\Strabo\packages\GeoAPI.1.7.1.1\lib\net40-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\Source\Repos\Strabo\packages\ICSharpCode.SharpZipLib.dll.0.85.4.369\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.AWT.WinForms">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.AWT.WinForms.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.AWT.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Beans">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Beans.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Charsets">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Charsets.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Corba">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Corba.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>..\packages\IKVM.OpenJDK.Core.7.2.4630.5\lib\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Jdbc">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Jdbc.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Management">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Management.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Media">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Media.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Misc">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Misc.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Naming">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Naming.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Remoting">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Remoting.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Security">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Security.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.SwingAWT">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.SwingAWT.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Text">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Text.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Tools">
       <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Util">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.Util.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.API">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.API.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.Bind">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.Bind.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.Crypto">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.Parse">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.Parse.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.RelaxNG, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ArcStrabo\Dependencies\IKVM.OpenJDK.XML.RelaxNG.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.RelaxNG.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.Transform">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.Transform.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.WebServices">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.XPath">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.OpenJDK.XML.XPath.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Reflection.Emit, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ArcStrabo\Dependencies\IKVM.Reflection.Emit.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.Reflection.Emit.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Reflection.Emit.MdbWriter, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ArcStrabo\Dependencies\IKVM.Reflection.Emit.MdbWriter.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.Reflection.Emit.MdbWriter.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Reflection.Emit.PdbWriter, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ArcStrabo\Dependencies\IKVM.Reflection.Emit.PdbWriter.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.Reflection.Emit.PdbWriter.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Runtime">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.Runtime.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Runtime.JNI">
-      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.Runtime.JNI.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
     <Reference Include="LinkedDataTools.JenaDotNet">
-      <HintPath>..\bin\Debug\LinkedDataTools.JenaDotNet.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Dependencies (1)\Dependencies\LinkedDataTools.JenaDotNet.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite">
       <HintPath>..\..\..\..\Source\Repos\Strabo\packages\NetTopologySuite.1.13.1\lib\net40-client\NetTopologySuite.dll</HintPath>
@@ -296,11 +296,16 @@
     <Compile Include="SymbolRecognition\DBpedia.cs" />
     <Compile Include="SymbolRecognition\DrawMatches.cs" />
     <Compile Include="TextDetection\ConditionalDilationAutomatic.cs" />
+    <Compile Include="TextDetection\ConditionalDilationChinese.cs" />
+    <Compile Include="TextDetection\ConditionalDilationFarsi.cs" />
     <Compile Include="TextDetection\DetectTextStrings.cs" />
+    <Compile Include="TextDetection\DetectTextStringsChinese.cs" />
+    <Compile Include="TextDetection\DetectTextStringsFarsi.cs" />
     <Compile Include="TextDetection\Geometry.cs" />
     <Compile Include="TextDetection\MergeTextStrings.cs" />
     <Compile Include="TextDetection\MultiThreadsSkewnessDetection.cs" />
     <Compile Include="TextDetection\TextDetectionWorker.cs" />
+    <Compile Include="TextDetection\TextDetectionWorkerFarsi.cs" />
     <Compile Include="TextDetection\TextString.cs" />
     <Compile Include="TextLayerExtraction\ColorDecompositionFast.cs" />
     <Compile Include="TextLayerExtraction\RunLengthSmoothing.cs" />

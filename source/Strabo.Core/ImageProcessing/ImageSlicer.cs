@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace Strabo.Core.ImageProcessing
 {
     public class ImageSlicer
@@ -58,8 +59,15 @@ namespace Strabo.Core.ImageProcessing
                     xy_offset[0] = x; xy_offset[1] = y;
                     xy_offset_list.Add(xy_offset);
                     Rectangle rect = new Rectangle(x, y, xwidth, yheight);
+
+
+                    Console.Write("Size is :"+srcimg.Size);
+                //    Console.Read();
                     //Crop crop = new Crop(rect);
                     Bitmap tile = srcimg.Clone(rect, srcimg.PixelFormat);
+                    
+
+
                     results.Add(tile);
                 }
             return results;
