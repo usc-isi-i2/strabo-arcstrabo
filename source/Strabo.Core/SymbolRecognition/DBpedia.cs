@@ -115,7 +115,6 @@ namespace Strabo.Core.SymbolRecognition
 
 
 
-
 #region test
             //"SELECT ?c ?geo " + "From <http://dbpedia.org/snorql/>" +
             //  "WHERE {" + "?m geo:geometry ?geo ." + " ?m a ?c ." + "FILTER (bif:st_within(?geo, bif:st_point (33.325604, 44.409851  ), 100))"

@@ -19,9 +19,10 @@ namespace Strabo.Test
         static void Main(string[] args)
         {
             //TestTextLayerSeparation.textLayerExtract();
-            
+            TestSymbolRecognition tsr = new TestSymbolRecognition();
+            tsr.test();
             //TestTextIdentification.test();
-            TestColorSegmentation.test("");
+            //TestColorSegmentation.test("");
             //TestOCR.test();
 
             //if (args.Length == 0)
