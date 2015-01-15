@@ -1,0 +1,48 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ArcStrabo10</Name>
+  <AddInID>{c8a06946-410f-4bd8-9883-4aa69fc49296}</AddInID>
+  <Description>ArcStrabo Addin for ArcMap 10.0 version</Description>
+  <Version>1.0</Version>
+  <Image>Images\ArcStrabo10.png</Image>
+  <Author>Akshay anand, Yao-Yi Chiang</Author>
+  <Company></Company>
+  <Date>1/14/2015</Date>
+  <Targets>
+    <Target name="Desktop" version="10.0" />
+  </Targets>
+  <AddIn language="CLR" library="ArcStrabo10.dll" namespace="ArcStrabo10">
+    <ArcMap>
+ 
+        <Commands>
+          <Button id="USC_ArcStrabo_ButtonShowStraboHome" class="ButtonShowStraboHome" message="Strabo Directory" caption="Strabo Directory" tip="Click to show the path of environment variable STRABO_HOME" category="ArcStrabo2" />
+          <Button id="USC_ArcStrabo_ButtonShowTessdataPrefix" class="ButtonShowTessdataPrefix" message="Tessdata Directory" caption="Tessdata Directory" tip="Click to show the path of the environment variable TESSDATA_HOME" category="ArcStrabo2" />
+
+          <ComboBox id="USC_ArcStrabo_ComboBoxLayerSelector" class="ComboBoxLayerSelector" message="Input Map" caption="Input Map" tip="Click to select the input map" category="ArcStrabo2" image="" hintText="--Select Map Layer--" sizeString="--Select Map Layer--" itemSizeString="--Select Map Layer--" />
+          <ComboBox id="USC_ArcStrabo_ComboBoxLanguageSelector" class="ComboBoxLanguageSelector" message="Language" caption="Language" tip="Click to select the recognition language" category="ArcStrabo2" image="" hintText="--Select Language--" sizeString="--Select Language--" itemSizeString="--Select Language--" />
+
+          <Button id="USC_ArcStrabo_ButtonSymbolRecognition" class="ButtonSymbolRecognition" message="Symbol Recognition" caption="Symbol Recognition" tip="Click to recognize map symbols" category="ArcStrabo2" image="Images\ButtonSymbolRecognition2.png" />
+          <Button id="USC_ArcStrabo_ButtonTextExtraction" class="ButtonTextExtraction" message="Text Recognition" caption="Text Recognition" tip="Click to recognize map text" category="ArcStrabo2" image="Images\ButtonTextExtraction2.png" />
+          <Button id="USC_ArcStrabo_ButtonColorSegmentation" class="ButtonColorSegmentation" message="Color Segmentation" caption="Color Segmentation" tip="Click to generate quantized maps" category="ArcStrabo2" image="Images\ButtonColorSegmentation2.png" />
+        </Commands>
+        <Toolbars>
+          <Toolbar id="ArcStrabo2_Toolbar" caption="ArcStrabo2" showInitially="true">
+            <Items>
+              <Button refID="USC_ArcStrabo_ButtonShowStraboHome" />
+              <Button refID="USC_ArcStrabo_ButtonShowTessdataPrefix" />
+              <ComboBox refID="USC_ArcStrabo_ComboBoxLayerSelector" />
+              <ComboBox refID="USC_ArcStrabo_ComboBoxLanguageSelector" />
+              <Button refID="USC_ArcStrabo_ButtonColorSegmentation" />
+              <Button refID="USC_ArcStrabo_ButtonTextExtraction" />
+              <Button refID="USC_ArcStrabo_ButtonSymbolRecognition" />
+            </Items>
+          </Toolbar>
+        </Toolbars>
+        <Extensions>
+          <Extension id="ArcStrabo10_ArcStrabo10Extension" class="ArcStrabo10Extension" productName="ArcStrabo10" showInExtensionDialog="true" autoLoad="true">
+            <Description>ArcStrabo extension for ArcMap 10.0</Description>
+          </Extension>
+        </Extensions>
+      </ArcMap>
+   
+  </AddIn>
+</ESRI.Configuration>
