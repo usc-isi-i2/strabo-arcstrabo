@@ -10,11 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KMeans</RootNamespace>
     <AssemblyName>KMeans</AssemblyName>
-<<<<<<< HEAD
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-=======
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
->>>>>>> a4d322b4cff0246fbee46a78d136016136a12a54
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
