@@ -26,6 +26,7 @@ using System.IO;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Desktop.AddIns;
 using Strabo.Core.Utility;
+using System.Windows.Forms;
 
 namespace ArcStrabo10
 {
@@ -35,8 +36,8 @@ namespace ArcStrabo10
         {
         }
 
-    public static string ErrorMsgNoInputMap = "No input map has been selected from the drop-down menu in the ArcStrabo2 Toolbar." + "\n \n" + "Please select an input map for text extraction.";
-        public static string ErrorMsgNoInputLanguage = "No input language has been selected from the drop-down menu in the ArcStrabo2 Toolbar." + "\n \n" + "Please select a language for text extraction.";
+    public static string ErrorMsgNoInputMap = "No input map has been selected from the drop-down menu in the ArcStrabo10 Toolbar." + "\n \n" + "Please select an input map for text extraction.";
+        public static string ErrorMsgNoInputLanguage = "No input language has been selected from the drop-down menu in the ArcStrabo10 Toolbar." + "\n \n" + "Please select a language for text extraction.";
         public static string ErrorMsgNameTextLayer = "Unable to create unique name for TextLayer.png file";
         public static string ErrorMsgNameOCRLayer = "Unable to create unique name for OCRLayer file";
         public static string ErrorMsgNoTable = "Please upload a data table for transformation";
@@ -69,7 +70,7 @@ namespace ArcStrabo10
 
         public static ProgressForm pForm = new ProgressForm();
 
-        private IMap m_map;
+        public static IMap m_map;
         private static ArcStrabo10Extension s_extension;
 
         //http://help.arcgis.com/en/sdk/10.0/arcobjects_net/componenthelp/index.html#/ArcMap_Element/001v000001s7000000/
@@ -77,11 +78,13 @@ namespace ArcStrabo10
       
         protected override void OnStartup()
         {
+            
             s_extension = this;
-
+            
             // Wire up events
             ArcMap.Events.NewDocument += ArcMap_NewOpenDocument;
             ArcMap.Events.OpenDocument += ArcMap_NewOpenDocument;
+
         }
         private void ArcMap_NewOpenDocument()
         {
@@ -114,9 +117,12 @@ namespace ArcStrabo10
         }
         private void Initialize()
         {
+            try
+            {
+          
             // If the extension hasn't been started yet or it's been turned off, bail
-            if (s_extension == null || this.State != ExtensionState.Enabled)
-                return;
+            //if (s_extension == null || this.State != ExtensionState.Enabled)
+            //    return;
 
             // Reset event handlers
             IActiveViewEvents_Event avEvent = ArcMap.Document.FocusMap as IActiveViewEvents_Event;
@@ -130,6 +136,11 @@ namespace ArcStrabo10
 
             FillLayerComboBox();
             FillLanguageComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(""+ex);   
+            }
         }
 
         private void Uninitialize()
@@ -171,6 +182,7 @@ namespace ArcStrabo10
         {
             m_map = ArcMap.Document.FocusMap;
             FillLayerComboBox();
+            FillLanguageComboBox();
         }
 
         private void AVEvents_FocusMapChanged()
@@ -204,11 +216,11 @@ namespace ArcStrabo10
         private void FillLanguageComboBox()
         {
             ComboBoxLanguageSelector languageNameCombo = ComboBoxLanguageSelector.GetLanguageNameComboBox();
-            if (languageNameCombo == null)
-                return;
+            //if (languageNameCombo == null)
+            //    return;
 
             languageNameCombo.ClearAll();
-
+           
             languageNameCombo.AddItem("English");
             languageNameCombo.AddItem("Farsi");
             languageNameCombo.AddItem("Chinese");

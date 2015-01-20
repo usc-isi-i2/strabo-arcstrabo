@@ -22,7 +22,7 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Strabo.Test.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -94,6 +94,10 @@
     </Reference>
     <Reference Include="Emgu.Util">
       <HintPath>..\..\..\Release\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\release\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Tasks.v3.5" />
     <Reference Include="Newtonsoft.Json">

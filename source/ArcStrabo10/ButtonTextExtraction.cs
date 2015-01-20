@@ -182,6 +182,7 @@ namespace ArcStrabo10
 
         protected override void OnUpdate()
         {
+
             Enabled = ArcMap.Application != null;
         }
 

@@ -37,6 +37,8 @@ namespace ArcStrabo10
         {
             s_comboBox = this;
             s_comboBox.Enabled = true;
+        
+            
         }
 
 
@@ -68,7 +70,9 @@ namespace ArcStrabo10
 
         protected override void OnUpdate()
         {
-            this.Enabled = ArcStrabo10Extension.IsExtensionEnabled();
+           // this.Enabled = true;
+            Enabled = ArcMap.Application != null;
+
         }
 
 

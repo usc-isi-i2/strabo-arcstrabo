@@ -46,11 +46,12 @@ namespace ArcStrabo10
 
         internal void AddItem(string itemName, IRasterLayer layer)
         {
-            //   if (s_comboBox.items.Count == 0)
-            //  {
             s_comboBox.Add(itemName, layer);
-            //s_comboBox.Select(m_selAllCookie);
-            //   }
+            if (s_comboBox.items.Count == 0)
+            {
+               
+              // s_comboBox.Select(m_selAllCookie);
+            }
 
             // Add each item to combo box.
             //  int cookie = s_comboBox.Add(itemName, layer);
@@ -58,15 +59,17 @@ namespace ArcStrabo10
 
         internal void ClearAll()
         {
-            //   m_selAllCookie = -1;
+          //  m_selAllCookie = -1;
             s_comboBox.Clear();
-            //s_comboBox.Add("Select a map");
+          //s_comboBox.Add("Select a map");
 
         }
 
         protected override void OnUpdate()
         {
-            this.Enabled = ArcStrabo10Extension.IsExtensionEnabled();
+           // this.Enabled = true;
+            Enabled = ArcMap.Application != null;
+           
         }
 
         protected override void OnSelChange(int cookie)
@@ -83,7 +86,6 @@ namespace ArcStrabo10
                 if (cookie == item.Cookie)
                 {
                     selected_layer_name = item.Caption;
-
                 }
             }
 
@@ -108,6 +110,9 @@ namespace ArcStrabo10
             }
             return null;
         }
+
+     
+       
     }
 
 }
