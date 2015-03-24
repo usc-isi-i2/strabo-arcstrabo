@@ -708,6 +708,13 @@ namespace ArcStrabo10
                         int.Parse(Math.Round((y1 - y2)).ToString()));
                    // Image<Bgr, Byte> test =  srcImage.GetSubRect(rec);
                     Bitmap img = srcImage.Bitmap;
+
+                    if (rec.X < 0 || rec.X > srcImage.Width || rec.Y < 0 || rec.Y > srcImage.Height)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Text recognition labels are out of bound! please check and put them within Image");
+                        return;
+                    }
+
                     Bitmap cropedImage = img.Clone(rec, img.PixelFormat); 
                     cropedImage.Save(CreateDirectory(path, "Data") + "\\img" + j.ToString());
                     imgList.Add(cropedImage);
