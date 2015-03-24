@@ -135,7 +135,7 @@ namespace ArcStrabo10
             m_map = ArcMap.Document.FocusMap;
 
             FillLayerComboBox();
-            FillLanguageComboBox();
+          //  FillLanguageComboBox();
             }
             catch (Exception ex)
             {
@@ -219,6 +219,7 @@ namespace ArcStrabo10
             //if (languageNameCombo == null)
             //    return;
 
+            
             languageNameCombo.ClearAll();
            
             languageNameCombo.AddItem("English");

@@ -90,7 +90,8 @@ namespace ArcStrabo10
             string input_data_source_directory;
             try
             {
-                input_data_source_directory = rasterlayer.FilePath; 
+                input_data_source_directory = rasterlayer.FilePath;
+                //input_data_source_directory = "B:\\Users\\akshay anand\\strabo\\strabo\\data\\text_extraction\\Opensource_Afghanistan_Kabul_City_Center\\";
             }
             catch (Exception)
             {
@@ -148,13 +149,13 @@ namespace ArcStrabo10
             System.Windows.Forms.Cursor.Current = Cursors.AppStarting;
 
             //// Select language from combo box in toolbar
-            //ComboBoxLanguageSelector languageNameCombo = ComboBoxLanguageSelector.GetLanguageNameComboBox();
-            //string lng = languageNameCombo.Get_selected_language();
-            //if (lng == null)
-            //{
-            //    MessageBox.Show(ArcStrabo10Extension.ErrorMsgNoInputLanguage, "Input Language Error", MessageBoxButtons.OK);
-            //    return;
-            //}
+           // ComboBoxLanguageSelector languageNameCombo = ComboBoxLanguageSelector.GetLanguageNameComboBox();
+           // string lng = languageNameCombo.Get_selected_language();
+            if (lng == null)
+            {
+                MessageBox.Show(ArcStrabo10Extension.ErrorMsgNoInputLanguage, "Input Language Error", MessageBoxButtons.OK);
+                return;
+            }
             Strabo.Core.OCR.WrapperTesseract language = new Strabo.Core.OCR.WrapperTesseract(tessPath, lng);
             /// Strabo.Core.OCR.WrapperTesseract language = new Strabo.Core.OCR.WrapperTesseract(tessPath);
             language.ExtractTextToGEOJSON(ArcStrabo10Extension.Intermediate_Result_Path,ArcStrabo10Extension.Text_Result_Path,ArcStrabo10Extension.TesseractResultsJSONFileName);

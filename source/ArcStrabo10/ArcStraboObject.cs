@@ -706,10 +706,10 @@ namespace ArcStrabo10
 
                     Rectangle rec = new Rectangle(int.Parse(Math.Round(x1).ToString()), int.Parse((Math.Round(y1 * -1)).ToString()), int.Parse(Math.Round((x2 - x1)).ToString()),
                         int.Parse(Math.Round((y1 - y2)).ToString()));
-                    //Image<Bgr, Byte> test = srcImage.GetSubRect(rec);
+                   // Image<Bgr, Byte> test =  srcImage.GetSubRect(rec);
                     Bitmap img = srcImage.Bitmap;
-                    Bitmap cropedImage = img.Clone(rec, img.PixelFormat);
-                    //cropedImage.Save(CreateDirectory(path, "Data") + "\\img" + j.ToString());
+                    Bitmap cropedImage = img.Clone(rec, img.PixelFormat); 
+                    cropedImage.Save(CreateDirectory(path, "Data") + "\\img" + j.ToString());
                     imgList.Add(cropedImage);
                 }
             }
