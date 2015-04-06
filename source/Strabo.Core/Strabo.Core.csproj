@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66819AF4-B1ED-4138-96C6-F2BF2A77CC3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Strabo.Core</RootNamespace>
+    <AssemblyName>Strabo.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV">
+      <HintPath>..\..\..\Release\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2010">
+      <HintPath>..\..\..\Release\Emgu.CV.DebuggerVisualizers.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2012">
+      <HintPath>..\..\..\Release\Emgu.CV.DebuggerVisualizers.VS2012.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.GPU">
+      <HintPath>..\..\..\Release\Emgu.CV.GPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.ML">
+      <HintPath>..\..\..\Release\Emgu.CV.ML.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.OCR">
+      <HintPath>..\..\..\Release\Emgu.CV.OCR.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.OpenCL">
+      <HintPath>..\..\..\Release\Emgu.CV.OpenCL.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.Stitching">
+      <HintPath>..\..\..\Release\Emgu.CV.Stitching.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>..\..\..\Release\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.VideoStab">
+      <HintPath>..\..\..\Release\Emgu.CV.VideoStab.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util">
+      <HintPath>..\..\..\Release\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms">
+      <HintPath>..\..\thirdparty\dependencies\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets">
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=0.42.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\release\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools">
+      <HintPath>..\packages\IKVM.7.4.5196.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.Bind.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.RelaxNG">
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.RelaxNG.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.Transform.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.OpenJDK.XML.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection.Emit">
+      <HintPath>..\..\thirdparty\dependencies\IKVM.Reflection.Emit.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection.Emit.MdbWriter">
+      <HintPath>..\..\thirdparty\dependencies\IKVM.Reflection.Emit.MdbWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection.Emit.PdbWriter">
+      <HintPath>..\..\thirdparty\dependencies\IKVM.Reflection.Emit.PdbWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=7.4.5196.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\dependencies\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="LinkedDataTools.JenaDotNet">
+      <HintPath>..\..\thirdparty\dependencies\LinkedDataTools.JenaDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Tasks.NET35">
+      <HintPath>..\packages\System.Threading.Tasks.Unofficial.3.1\lib\net35\System.Threading.Tasks.NET35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorSegmentation\ColorExtraction.cs" />
+    <Compile Include="ColorSegmentation\ColorSegmentationWorker.cs" />
+    <Compile Include="ColorSegmentation\CompareImageLayers.cs" />
+    <Compile Include="ColorSegmentation\ConnectedComponent.cs" />
+    <Compile Include="ColorSegmentation\MeanShiftMultiThreads.cs" />
+    <Compile Include="ColorSegmentation\MedianCutMultiThreads.cs" />
+    <Compile Include="ColorSegmentation\MyKMeans.cs" />
+    <Compile Include="ColorSegmentation\PreProcessing.cs" />
+    <Compile Include="DataType\LineFunction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageProcessing\ColorHistogram.cs" />
+    <Compile Include="ImageProcessing\ConnectingGap.cs" />
+    <Compile Include="ImageProcessing\DistanceTransformation.cs" />
+    <Compile Include="ImageProcessing\ImageSlicer.cs" />
+    <Compile Include="ImageProcessing\ImageStatistics.cs" />
+    <Compile Include="ImageProcessing\ImageStitcher.cs" />
+    <Compile Include="ImageProcessing\LineOfBestFit.cs" />
+    <Compile Include="ImageProcessing\MultiThreadBinarization.cs" />
+    <Compile Include="ImageProcessing\MyConnectedComponentsAnalysisFast.cs" />
+    <Compile Include="ImageProcessing\RemoveBoarderCC.cs" />
+    <Compile Include="ImageProcessing\RotateImage.cs" />
+    <Compile Include="OCR\FeatureInJSON.cs" />
+    <Compile Include="OCR\WrapperTesseract.cs" />
+    <Compile Include="SymbolRecognition\DBpedia.cs" />
+    <Compile Include="SymbolRecognition\DrawMatches.cs" />
+    <Compile Include="TextDetection\ConditionalDilationAutomatic.cs" />
+    <Compile Include="TextDetection\ConditionalDilationChinese.cs" />
+    <Compile Include="TextDetection\ConditionalDilationFarsi.cs" />
+    <Compile Include="TextDetection\DetectTextStrings.cs" />
+    <Compile Include="TextDetection\DetectTextStringsChinese.cs" />
+    <Compile Include="TextDetection\DetectTextStringsFarsi.cs" />
+    <Compile Include="TextDetection\Geometry.cs" />
+    <Compile Include="TextDetection\MergeTextStrings.cs" />
+    <Compile Include="TextDetection\MultiThreadsSkewnessDetection.cs" />
+    <Compile Include="TextDetection\TextDetectionWorker.cs" />
+    <Compile Include="TextDetection\TextDetectionWorkerFarsi.cs" />
+    <Compile Include="TextDetection\TextString.cs" />
+    <Compile Include="TextLayerExtraction\ColorDecompositionFast.cs" />
+    <Compile Include="TextLayerExtraction\RunLengthSmoothing.cs" />
+    <Compile Include="TextLayerExtraction\TextCCAnalysis.cs" />
+    <Compile Include="TextLayerExtraction\TextLayerExtractionTrainer.cs" />
+    <Compile Include="Utility\CurrentState.cs" />
+    <Compile Include="Utility\EnvConfigs.cs" />
+    <Compile Include="ImageProcessing\ImageUtils.cs" />
+    <Compile Include="Utility\Log.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ImageProcessing\RGB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SymbolRecognition\Dependencies\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.AWT.WinForms.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Beans.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Charsets.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Corba.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Core.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Jdbc.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Management.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Media.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Misc.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Naming.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Remoting.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Security.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.SwingAWT.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Text.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.Util.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.API.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Bind.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Crypto.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Parse.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.RelaxNG.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.Transform.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.WebServices.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.OpenJDK.XML.XPath.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Reflection.Emit.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Reflection.Emit.MdbWriter.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Reflection.Emit.PdbWriter.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Runtime.dll" />
+    <Content Include="SymbolRecognition\Dependencies\IKVM.Runtime.JNI.dll" />
+    <Content Include="SymbolRecognition\Dependencies\LinkedDataTools.JenaDotNet.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OCR\Archive\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KMeans\KMeans.csproj">
+      <Project>{E5AC138A-4968-4486-82DA-4D0D10F3337F}</Project>
+      <Name>KMeans</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
